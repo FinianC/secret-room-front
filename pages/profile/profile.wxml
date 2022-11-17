@@ -5,5 +5,5 @@
   <text style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;">{{userName}}</text>
 
   <!-- 标语 -->
-  <text class="motto">在嘈杂世界里，认真说话。</text>
+  <text class="motto">小程序只提供方便组队，禁止私下交易，防止上当受骗。</text>
 </view>

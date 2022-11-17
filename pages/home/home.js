@@ -27,6 +27,20 @@ Page({
         imageUrl:'../../images/icon.png',
         createdAt:'2022-11-14 18:00'
       },
+      {
+        userAvatar:'../../images/icon.png',
+        userName:'save',
+        text:'这周五晚18:00 5=2',
+        imageUrl:'../../images/icon.png',
+        createdAt:'2022-11-14 18:00'
+      },
+      {
+        userAvatar:'../../images/icon.png',
+        userName:'save',
+        text:'这周五晚18:00 5=2',
+        imageUrl:'../../images/icon.png',
+        createdAt:'2022-11-14 18:00'
+      },
     ],
     currentIndex:-1,
     //0表示未播放，1表示正在播放，2表示播放暂停
@@ -41,7 +55,6 @@ Page({
     that = this;
 
     backgroundAudioManager.onPlay(()=>{
-      wx.hideLoading()
       that.setData({
         currentIndex: currentIndex,
         playState:1
@@ -49,7 +62,6 @@ Page({
     })
 
     backgroundAudioManager.onEnded(() => {
-      wx.hideLoading()
       that.setData({
         currentIndex: -1,
         playState:0,
@@ -57,14 +69,12 @@ Page({
     })
 
     backgroundAudioManager.onPause(() => {
-      wx.hideLoading()
       that.setData({
         playState: 2
       })
     })
 
     backgroundAudioManager.onError(() => {
-      wx.hideLoading()
       that.setData({
         currentIndex: -1,
         playState: 0
@@ -88,33 +98,7 @@ Page({
     })
   },
 
-  playVoice:function(event){
-    console.log(event)
-    wx.showLoading({
-      title: '加载中',
-    })
-    if (this.data.playState==0){
-      currentIndex = event.currentTarget.dataset.index
-      let currentVoiceUrl = this.data.articles[currentIndex].voiceUrl
-      console.log(currentIndex + '/' + currentVoiceUrl)
-      backgroundAudioManager.title = '密逃'
-      backgroundAudioManager.src = currentVoiceUrl
-      backgroundAudioManager.play()
-    } else if (this.data.playState == 1){
-      backgroundAudioManager.pause()
-    } else if (this.data.playState == 2) {
-      if (currentIndex == event.currentTarget.dataset.index) {
-        backgroundAudioManager.play()
-      }else{
-        currentIndex = event.currentTarget.dataset.index
-        let currentVoiceUrl = this.data.articles[currentIndex].voiceUrl
-        console.log(currentIndex + '/' + currentVoiceUrl)
-        backgroundAudioManager.title = '难眠'
-        backgroundAudioManager.src = currentVoiceUrl
-        backgroundAudioManager.play()
-      }
-    }
-  },
+  
 
   jumpToDetailCmt:function(){
 
