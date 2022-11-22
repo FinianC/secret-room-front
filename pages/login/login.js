@@ -1,4 +1,5 @@
 // pages/login/login.js
+import { getOpenId } from '../../api/index'
 Page({
 
   /**
@@ -16,10 +17,20 @@ Page({
   },
 
   onGotUserInfo:function(event){
-    console.log(event)
-    wx.switchTab({
-      url: '../home/home',
-    })
+    wx.login({
+      success: async function(res) {
+        console.log(res);
+        if (res.code) {
+          //发起网络请求
+          await getOpenId(res.code)
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+    // wx.switchTab({
+    //   url: '../home/home',
+    // })
   }
 
 })
