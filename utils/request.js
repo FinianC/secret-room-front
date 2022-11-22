@@ -48,7 +48,7 @@ function request(options) {
       },
       fail: err => {
         wx.showToast({
-          title: err.errMsg,
+          title: err.message,
           icon: 'none',
           duration: 2000,
           mask: true
