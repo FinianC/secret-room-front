@@ -1,5 +1,6 @@
 // pages/login/login.js
 import { getOpenId } from '../../api/index'
+import { setAppToken } from '../../utils/token'
 Page({
 
   /**
@@ -22,15 +23,25 @@ Page({
         console.log(res);
         if (res.code) {
           //发起网络请求
-          await getOpenId(res.code)
+          try{
+            const respones = await getOpenId({code : res.code})
+            debugger
+            await setAppToken(respones?.data?.token || {})
+            wx.switchTab({
+              url: '../home/home',
+            })
+          }catch(e){
+            console.log(e);
+          }
+      
+
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
+      
       }
     });
-    // wx.switchTab({
-    //   url: '../home/home',
-    // })
+  
   }
 
 })

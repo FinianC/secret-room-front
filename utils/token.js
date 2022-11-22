@@ -1,6 +1,6 @@
-const app_token = 'Swrh_token'
-const app_user = "Swrh_user"
-const app_key = "Swrh_key"
+const app_token = 'app_token'
+const app_user = "app_user"
+const app_key = "app_key"
 const getAppToken = () => {
   return wx.getStorageSync(app_token)
 }

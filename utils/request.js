@@ -1,6 +1,7 @@
 import { getAppToken, removeAppToken, removeAppUser, getAppKey } from './token'
 import ipConfig from './ipConfig'
 function request(options) {
+  console.log(options);
   var method = options.method || 'GET';
   var Swrh_Token = getAppToken() || ''
   if (options.isLoading) {
@@ -37,7 +38,7 @@ function request(options) {
         }
         else {
           return wx.showToast({
-            title: response.msg,
+            title: response.message,
             icon: 'none',
             duration: 4000,
             mask: true
