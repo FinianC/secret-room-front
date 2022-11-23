@@ -23,7 +23,7 @@ function request(options) {
         let response = res?.data || {}
         if (response?.code == 200 || response?.code == -1) {
           return resolve(response)
-        } else if (response.code == -2) {// token失效
+        } else if (response.code == 1003 || response.code == 1002) {// token失效
           removeAppToken()
           removeAppUser()
           if (currPage != 'pages/login/login') {

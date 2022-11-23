@@ -57,7 +57,11 @@ Page({
    */
   onLoad:async function (options) {
     const res = await getMotorcadeList(this.data.searchForm)
+    res.data.records.pictures = JSON.parse(res.data.records.pictures)
     console.log(res);
+    this.setData({
+      articles:res.data.records
+    })
     // that = this;
     // backgroundAudioManager.onPlay(()=>{
     //   that.setData({
