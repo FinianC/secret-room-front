@@ -24,7 +24,6 @@ Page({
           //发起网络请求
           try{
             const respones = await getOpenId({code : res.code})
-            debugger
             await setAppToken(respones?.data?.token || {})
             wx.switchTab({
               url: '../home/home',

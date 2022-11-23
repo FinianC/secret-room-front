@@ -2,7 +2,7 @@
 <!-- 评论列表,可以是图片，可以是文字，可以是声音 -->
 <view style="width: 100%;height: 800rpx;background-color: whitesmoke;">
   <scroll-view scroll-y>
-    <view wx:key="{{objectId}}" wx:for="{{articles}}" bindtap='jumpToDetailCmt'>
+    <view wx:key="{{index}}" wx:for="{{articles}}" bindtap='jumpToDetailCmt'>
       <view class="comment-container">
         
         <!-- 头像 -->

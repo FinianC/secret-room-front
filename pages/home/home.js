@@ -1,5 +1,5 @@
 // pages/home/home.js
-
+import {getMotorcadeList} from '../../api/index'
 const moment = require('../../utils/moment.js')
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 
@@ -45,41 +45,46 @@ Page({
     currentIndex:-1,
     //0表示未播放，1表示正在播放，2表示播放暂停
     playState:0,
-    currentExpandIndex:-1//当前展开的Index
+    currentExpandIndex:-1,//当前展开的Index
+    searchForm:{
+      "current": 1,
+      "pageSize": 5,
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    that = this;
+  onLoad:async function (options) {
+    const res = await getMotorcadeList(this.data.searchForm)
+    console.log(res);
+    // that = this;
+    // backgroundAudioManager.onPlay(()=>{
+    //   that.setData({
+    //     currentIndex: currentIndex,
+    //     playState:1
+    //   })
+    // })
 
-    backgroundAudioManager.onPlay(()=>{
-      that.setData({
-        currentIndex: currentIndex,
-        playState:1
-      })
-    })
+    // backgroundAudioManager.onEnded(() => {
+    //   that.setData({
+    //     currentIndex: -1,
+    //     playState:0,
+    //   })
+    // })
 
-    backgroundAudioManager.onEnded(() => {
-      that.setData({
-        currentIndex: -1,
-        playState:0,
-      })
-    })
+    // backgroundAudioManager.onPause(() => {
+    //   that.setData({
+    //     playState: 2
+    //   })
+    // })
 
-    backgroundAudioManager.onPause(() => {
-      that.setData({
-        playState: 2
-      })
-    })
-
-    backgroundAudioManager.onError(() => {
-      that.setData({
-        currentIndex: -1,
-        playState: 0
-      })
-    })
+    // backgroundAudioManager.onError(() => {
+    //   that.setData({
+    //     currentIndex: -1,
+    //     playState: 0
+    //   })
+    // })
 
   },
 
