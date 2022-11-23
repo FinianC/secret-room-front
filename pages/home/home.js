@@ -13,34 +13,6 @@ Page({
    */
   data: {
     articles:[
-      {
-        userAvatar:'../../images/icon.png',
-        userName:'save',
-        text:'这周五晚18:00 5=2',
-        imageUrl:'../../images/icon.png',
-        createdAt:'2022-11-14 18:00'
-      },
-      {
-        userAvatar:'../../images/icon.png',
-        userName:'save',
-        text:'这周五晚18:00 5=2',
-        imageUrl:'../../images/icon.png',
-        createdAt:'2022-11-14 18:00'
-      },
-      {
-        userAvatar:'../../images/icon.png',
-        userName:'save',
-        text:'这周五晚18:00 5=2',
-        imageUrl:'../../images/icon.png',
-        createdAt:'2022-11-14 18:00'
-      },
-      {
-        userAvatar:'../../images/icon.png',
-        userName:'save',
-        text:'这周五晚18:00 5=2',
-        imageUrl:'../../images/icon.png',
-        createdAt:'2022-11-14 18:00'
-      },
     ],
     currentIndex:-1,
     //0表示未播放，1表示正在播放，2表示播放暂停
@@ -57,10 +29,12 @@ Page({
    */
   onLoad:async function (options) {
     const res = await getMotorcadeList(this.data.searchForm)
-    res.data.records.pictures = JSON.parse(res.data.records.pictures)
+    res.data.records.forEach((el)=>{
+      el.pictures = JSON.parse(el.pictures)
+    })
     console.log(res);
     this.setData({
-      articles:res.data.records
+      articles:res
     })
     // that = this;
     // backgroundAudioManager.onPlay(()=>{
