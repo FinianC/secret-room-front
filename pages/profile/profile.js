@@ -35,16 +35,19 @@ Page({
   },
  
   // 单选框性别修改
-  handleRadioChange:function(e){
-    let sex = parseInt(e.detail.value)
+  handleRadioChange:async function(e){
+    console.log(e);
     this.setData({
-        sex:sex,
+      [`${e.currentTarget.dataset.gater}`]: e.detail.value
     })
+    const res = await updateUserInfo(this.data.form)
   },
+
   // 输入框失去焦点时保存用户信息
   handleBlur:async function(e){
-    debugger
-    console.log(this.data.form);
+    this.setData({
+      [`${e.currentTarget.dataset.gater}`]: e.detail.value
+    })
     const res = await updateUserInfo(this.data.form)
   },
   onShareAppMessage: function (res) {
