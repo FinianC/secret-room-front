@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseUrl: '',
     articles:[
     ],
     currentIndex:-1,
@@ -34,7 +35,8 @@ Page({
     })
     console.log(res);
     this.setData({
-      articles:res
+      articles:res.data.records,
+      baseUrl:res.baseUrl
     })
     // that = this;
     // backgroundAudioManager.onPlay(()=>{

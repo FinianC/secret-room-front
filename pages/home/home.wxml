@@ -29,8 +29,8 @@
           </block>
           <!-- 图片内容 -->
           <block wx:if="{{item.pictures.length > 0}}">
-            <view class="comment-image-container"  bindtap='previewBigImage'>
-              <!-- <image src="" style="width:400rpx;height:400rpx;border-radius:16rpx;" mode="aspectFill">{{imgItem}}</image> -->
+            <view class="comment-image-container" wx:for="{{item.pictures}}" wx:for-item="imgItem" bindtap='previewBigImage' >
+              <image src="{{baseUrl + '/' +imgItem}}"  style="width:400rpx;height:400rpx;border-radius:16rpx;" mode="aspectFill"></image>
             </view>
           </block>
 
