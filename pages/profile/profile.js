@@ -10,11 +10,10 @@ Page({
   data: {
     userAvatar:'',
     userName:'密逃',
-    phone:'',
-    wechatNumber:'',
-    sex:1,
     form:{
-
+      phone:'',
+      wechatNumber:'',
+      sex:1,
     }
   },
 
@@ -44,15 +43,9 @@ Page({
   },
   // 输入框失去焦点时保存用户信息
   handleBlur:async function(e){
-    let form = {
-      sex:this.data.sex
-    }
-    if(e.target.id === 'phone'){
-      form.phone = e.detail.value
-    }else{
-      form.wechatNumber = e.detail.value
-    } 
-    const res = await updateUserInfo(form)
+    debugger
+    console.log(this.data.form);
+    const res = await updateUserInfo(this.data.form)
   },
   onShareAppMessage: function (res) {
     return {

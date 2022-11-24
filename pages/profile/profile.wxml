@@ -4,12 +4,12 @@
   <image class="avatar" src="{{userAvatar ? userAvatar:'https://secretescape.mynatapp.cc/secret/file/getFile/4'}}"></image>
   <text style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;">{{userName}}</text>
 
-  <input placeholder="手机号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" id="phone" value="{{phone}}" bindblur="handleBlur">{{phone}}</input>
-  <input placeholder="微信号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" id="wechart" value="{{wechatNumber}}" bindblur="handleBlur">{{wechatNumber}}</input>
+  <input placeholder="手机号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" id="phone" model:value="{{form.phone}}" bindblur="handleBlur">{{form.phone}}</input>
+  <input placeholder="微信号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" id="wechart" model:value="{{form.wechatNumber}}" bindblur="handleBlur">{{form.wechatNumber}}</input>
   <view style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;width: 100%;">
     <radio-group class="radio-sex" bindchange="handleRadioChange">
-      <radio color="#2999ff" value="1" checked="{{sex === 1? true : false}}">男</radio>
-      <radio color="#2999ff" value="0" checked="{{sex === 0? true : false}}">女</radio>
+      <radio color="#2999ff" value="1" checked="{{form.sex === 1? true : false}}">男</radio>
+      <radio color="#2999ff" value="0" checked="{{form.sex === 0? true : false}}">女</radio>
     </radio-group>
   </view>
 
