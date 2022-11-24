@@ -1,4 +1,5 @@
 // pages/upload/upload.js
+import UploadImg from '../../components/UploadImg'
 
 const recorderManager = wx.getRecorderManager();
 const app = getApp()

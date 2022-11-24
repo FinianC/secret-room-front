@@ -1,6 +1,6 @@
 /* pages/profile/profile.wxss */
 page{
-  background-color: white;
+  background-color: #fff;
 }
 
 .motto {
@@ -25,4 +25,13 @@ page{
   width: 120rpx;
   height: 120rpx;
   border-radius: 60rpx;
+}
+input{
+  text-align:center
+}
+.radio-sex{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
 }
