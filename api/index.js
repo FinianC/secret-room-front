@@ -19,3 +19,12 @@ export function getMotorcadeList(data) {
     data
   })
 }
+
+// 更新用户信息
+export function updateUserInfo(data) {
+  return request({
+    url: '/user/update',
+    method: 'POST',
+    data
+  })
+}

@@ -5,15 +5,6 @@
     "compileHotReLoad": true
   },
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
@@ -38,6 +29,13 @@
           "name": "pages/profile/profile",
           "pathName": "pages/profile/profile",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]
