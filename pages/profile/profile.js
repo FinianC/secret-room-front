@@ -1,5 +1,5 @@
 // pages/profile/profile.js
-import {updateUserInfo} from '../../api/index'
+
 const app = getApp();
 
 Page({
@@ -10,11 +10,7 @@ Page({
   data: {
     userAvatar:'',
     userName:'密逃',
-    form:{
-      phone:'',
-      wechatNumber:'',
-      sex:1,
-    }
+  
   },
 
   /**
@@ -33,27 +29,11 @@ Page({
       userName : nickName,
     })
   },
- 
-  // 单选框性别修改
-  handleRadioChange:async function(e){
-    console.log(e);
-    this.setData({
-      [`${e.currentTarget.dataset.gater}`]: e.detail.value
-    })
-    const res = await updateUserInfo(this.data.form)
-  },
 
-  // 输入框失去焦点时保存用户信息
-  handleBlur:async function(e){
-    this.setData({
-      [`${e.currentTarget.dataset.gater}`]: e.detail.value
+  // 跳转编辑页面
+  handleEdit:function(){
+    wx.navigateTo({
+      url: '/pages/profile/edit',
     })
-    const res = await updateUserInfo(this.data.form)
-  },
-  onShareAppMessage: function (res) {
-    return {
-      title: '密逃',
-    }
   }
-
 })

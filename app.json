@@ -7,9 +7,11 @@
     "pages/detail/detail",
     "pages/profile/profile",
     "pages/comment/comment",
-    "pages/write/write"
+    "pages/write/write",
+    "pages/profile/edit"
   ],
   "window": {
+    "navigationStyle":"custom",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",

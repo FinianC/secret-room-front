@@ -4,7 +4,17 @@
   "setting": {
     "compileHotReLoad": true
   },
+  "libVersion": "2.25.4",
   "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
     "miniprogram": {
       "list": [
         {
@@ -35,11 +45,15 @@
           "name": "",
           "pathName": "pages/profile/profile",
           "query": "",
-          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/profile/edit",
+          "pathName": "pages/profile/edit",
+          "query": "",
           "scene": null
         }
       ]
     }
-  },
-  "libVersion": "2.25.4"
+  }
 }

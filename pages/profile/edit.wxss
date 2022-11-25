@@ -1,0 +1,13 @@
+/* pages/profile/edit.wxss */
+page{
+  background-color: #eeeeee;
+}
+.bg-image{
+  width: 100%;
+  height: 200rpx;
+  position: absolute;
+  margin-top: 20rpx;
+  background:white;
+  background-size: 100%;
+  z-index: 1;
+}

@@ -1,5 +1,5 @@
 <!--pages/upload/upload.wxml-->
-<view style="height:100%;width:100%;">
+<view style="height:100%;width:100%;margin-top: 100rpx;">
   <!-- 写文字的地方 -->
   <textarea class="input" placeholder="写点什么吧..." placeholder-style="color:rgb(204, 204, 204);font-size:32rpx" maxlength="1000" bindblur="bindTextAreaBlur"></textarea>
 

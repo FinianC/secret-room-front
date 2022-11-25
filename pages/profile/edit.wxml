@@ -1,0 +1,12 @@
+<!--pages/profile/edit.wxml-->
+<view>
+  <input placeholder-style="color:#ffffff" placeholder="手机号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" bindblur="handleBlur" id="phone" data-gater="form.phone" model:value="{{form.phone}}">{{form.phone}}</input>
+  <input placeholder-style="color:#ffffff" placeholder="微信号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" bindblur="handleBlur" id="wechart" data-gater="form.wechatNumber" model:value="{{form.wechatNumber}}">{{form.wechatNumber}}</input>
+  <view style="font-size:32rpx;color:#fff;margin-top:28rpx;width: 100%;">
+  <radio-group class="radio-sex" data-gater="form.sex" bindchange="handleRadioChange">
+    <radio color="#2999ff" value="1" checked="{{ form.sex ===1? true:false }}">男</radio>
+    <radio color="#2999ff" value="0" checked="{{ form.sex ===0? true:false }}">女</radio>
+  </radio-group>
+  </view>
+</view>
+<view class="bg-image"></view>

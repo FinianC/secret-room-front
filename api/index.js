@@ -28,3 +28,12 @@ export function updateUserInfo(data) {
     data
   })
 }
+
+// 发布车队信息
+export function releaseMotorcade(data) {
+  return request({
+    url: '/motorcade/user/add',
+    method: 'POST',
+    data
+  })
+}

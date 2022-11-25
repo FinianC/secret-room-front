@@ -1,6 +1,7 @@
 // pages/upload/upload.js
 import UploadImg from '../../components/UploadImg'
 
+import {releaseMotorcade} from '../../api/index'
 const recorderManager = wx.getRecorderManager();
 const app = getApp()
 
