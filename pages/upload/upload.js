@@ -1,16 +1,9 @@
 // pages/upload/upload.js
 import UploadImg from '../../components/UploadImg'
 
-import {releaseMotorcade} from '../../api/index'
+import {releaseMotorcade,getFleetType} from '../../api/index'
 const recorderManager = wx.getRecorderManager();
 const app = getApp()
-
-let that;
-let date;
-let voiceUrl;
-let imageUrl;
-let voiceDuration;
-
 Page({
 
   /**
@@ -25,79 +18,25 @@ Page({
     recorderPath: '',
     //0表示未播放，1表示正在播放，2表示播放暂停
     playerState: 0,
-  },
+    fleetType:[],
+    index:1
 
+  },
+  bindPickerChange: function(e) {
+    console.log(e);
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    that = this
-    date = new Date().getTime();
-    voiceUrl = ''
-    imageUrl = ''
-    voiceDuration = 0
-    this.innerAudioContext = wx.createInnerAudioContext();
-
-    recorderManager.onStart(() => {
-      console.log('recorder start')
-      wx.hideLoading()
-      that.setData({
-        recorderState: 1,
-        playerState: 0
-      })
+  onLoad: async function(options) {
+    const res = await getFleetType()
+    this.setData({
+      fleetType: res.data
     })
-
-    recorderManager.onPause(() => {
-      console.log('recorder pause')
-      wx.hideLoading()
-      that.setData({
-        recorderState: 2
-      })
-    })
-
-    recorderManager.onStop((res) => {
-      console.log('recorder stop', res)
-      wx.hideLoading()
-      voiceDuration = res.duration
-      that.setData({
-        recorderState: 3,
-        recorderPath: res.tempFilePath
-      })
-    })
-
-    recorderManager.onFrameRecorded((res) => {
-      const {frameBuffer} = res
-      console.log('frameBuffer.byteLength', frameBuffer.byteLength)
-    })
-
-
-    this.innerAudioContext.onError((res) => {
-      that.tip("播放录音失败！")
-      that.setData({
-        playerState: 0
-      })
-    })
-
-    this.innerAudioContext.onPlay((res) => {
-      wx.hideLoading()
-      that.setData({
-        playerState: 1
-      })
-    })
-
-    this.innerAudioContext.onEnded((res) => {
-      // that.tip("播放结束")
-      that.setData({
-        playerState: 0
-      })
-    })
-
-    this.innerAudioContext.onPause((res) => {
-      that.setData({
-        playerState: 2
-      })
-    })
-
   },
 
   chooseImage: function(event) {
@@ -226,30 +165,8 @@ Page({
     })
   },
 
-  submitData: function(event) {
-    // 获得当前登录用户
-    wx.showLoading({
-      title: '获取登录状态',
-    })
-    // 调用小程序 API，得到用户信息
-    wx.getUserInfo({
-      success: ({ userInfo }) => {
-        // 更新当前用户的信息
-        user.set(userInfo).save().then(user => {
-          // 成功，此时可在控制台中看到更新后的用户信息
-          wx.hideLoading()
-          app.globalData.userInfo = user.toJSON();
-          console.log(app.globalData.userInfo)
-          that.uploadData();
-        }).catch((error)=>{
-          wx.hideLoading()
-        });
-      },
-      fail:(error)=>{
-        console.error(error)
-        wx.hideLoading()
-      }
-    });
+  submitData:async function(event) {
+    const res = await releaseMotorcade()
   },
 
   uploadData:function(){

@@ -37,3 +37,10 @@ export function releaseMotorcade(data) {
     data
   })
 }
+// 获取车队类型
+export function getFleetType() {
+  return request({
+    url: '/fleetType/list',
+    method: 'GET'
+  })
+}

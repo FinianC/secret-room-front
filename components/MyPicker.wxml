@@ -1,0 +1,25 @@
+<!--compontes/myPicker/myPicker.wxml-->
+<view class='wrap' >
+    <view class='picker-title' bindtap='pickerShow' style="display:flex;margin-top:20rpx;padding-left: 20rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;">
+        <text class='mheader-right-text'>{{pickerArray[pickerSelected]}}</text>
+        <view class='mheader-right-icon'>
+            <image src='../../images/icon-triangle.png'></image>
+        </view>
+    </view>
+
+    <view catchtap='catchWrap' hidden='{{pickerHidden}}' catchtouchmove = "doNotMove" class='picker-wrap'>
+        <view catchtap="catchPicker" class="picker {{pickerHidden?'':'slideUp'}}">
+            <view class='picker-btn'>
+                <view catchtap='pickerCancel' class='picker-btn-left'>取消</view>
+                <view catchtap='pickerConfirm' class='picker-btn-right'>确定</view>
+            </view>
+            <picker-view class='picker-view' 
+            indicator-class="indicator"  
+            catchchange="bindChange">
+                <picker-view-column class="picker-column">
+                    <view wx:for="{{pickerArray}}" wx:key="pickerKey" style="line-height: 30px">{{item}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </view>
+</view>

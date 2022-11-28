@@ -1,12 +1,21 @@
 <!--pages/upload/upload.wxml-->
-<view style="height:100%;width:100%;margin-top: 100rpx;">
-  <!-- 写文字的地方 -->
-  <textarea class="input" placeholder="写点什么吧..." placeholder-style="color:rgb(204, 204, 204);font-size:32rpx" maxlength="1000" bindblur="bindTextAreaBlur"></textarea>
-
-  <view style="display:flex;margin-top:16rpx">
-      <upload-img bind:getUploaderList="getUploaderList"></upload-img>
-  </view>
-
+<view style="height:100%;width:100%;margin-top: 170rpx;">
+   <!-- 写文字的地方 -->
+    <form bindsubmit="">
+      <textarea class="input" placeholder="写点什么吧..." placeholder-style="color:rgb(204, 204, 204);font-size:32rpx" maxlength="1000" bindblur="bindTextAreaBlur"></textarea>
+      <view style="display:flex;margin-top:20rpx;padding-left: 20rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;">
+        <input placeholder="请输入拼团人数" type="text" />
+      </view>
+      <view style="display:flex;margin-top:20rpx;padding-left: 20rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;">
+        <input placeholder="请输入价格" type="text" />
+      </view>
+   
+      <my-picker class="my-picker" />
+      
+      <view style="display:flex;margin-top:16rpx">
+        <upload-img bind:getUploaderList="getUploaderList"></upload-img>
+      </view>
+    </form>
   <!-- 发布按钮 -->
   <view class="submit-btn" bindtap='submitData'>发布</view>
 
