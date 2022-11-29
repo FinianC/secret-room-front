@@ -1,0 +1,85 @@
+/* compontes/myPicker/myPicker.wxss */
+
+.picker-title{
+  display: flex;
+}
+
+.mheader-right-text{
+  font-size: 15px;
+}
+.mheader-right-icon{
+  margin-left: 30rpx;
+}
+.mheader-right-icon image{
+  width:8px;
+  height: 4.5px;
+  vertical-align: middle;
+}
+
+
+
+.picker-wrap{
+  width:100vw;
+  height: 100vh;
+  position:fixed;
+  top:0;
+  bottom:0rpx;
+  left:0;
+  right:0;
+  z-index: 99999999;
+  background:rgba(0,0,0,0.3);
+}
+.picker{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100vw;
+  height: 500rpx;
+  padding:29rpx 0;
+  background-color: #fff;
+}
+
+/* picker-btn */
+.picker-btn{
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+}
+.picker-btn-left{
+  color: #999999;
+  padding-left: 20rpx;
+}
+.picker-btn-right{
+  color: #2775c7;
+  padding-right: 20rpx;
+}
+
+/* picker-view */
+.picker-view{
+  text-align: center;
+  font-size: 36rpx;
+  color:#000;
+  width:100%;
+  height: 400rpx;
+  margin-top:50rpx; 
+}
+
+/* 中间选择框样式 */
+.indicator{
+  width:208rpx;
+  height: 60rpx;
+  left:50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+}
+
+/* slideUp */
+.slideUp{
+  animation:slideUpmove 0.5s;
+}
+
+@keyframes slideUpmove{
+  from {bottom:-600rpx;}
+  to {bottom:0;}
+}

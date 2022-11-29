@@ -1,6 +1,6 @@
 /* pages/upload/upload.wxss */
 page{
-  background-color: white;
+  background-color: gray;
 }
 
 .input {
@@ -22,4 +22,7 @@ page{
   align-items: center;
   justify-content: center;
   background-color: rgb(41, 153, 255);
+}
+.my-picker{
+  width: 100%;
 }
