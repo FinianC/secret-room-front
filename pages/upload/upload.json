@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "upload-img": "/components/UploadImg",
-    "my-picker":"/components/MyPicker"
+    "my-picker":"/components/MyPicker",
+    "date-time-picker":"/components/DateTimePicker"
   }
 }

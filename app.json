@@ -9,7 +9,6 @@
     "pages/comment/comment",
     "pages/write/write",
     "pages/profile/edit",
-    "pages/group",
     "pages/group/group"
   ],
   "window": {

@@ -1,21 +1,22 @@
 <!--pages/upload/upload.wxml-->
-<view style="height:100%;width:100%;margin-top: 170rpx;">
+<view style="height:100%;width:100%">
    <!-- 写文字的地方 -->
-    <form bindsubmit="">
-      <textarea class="input" placeholder="写点什么吧..." placeholder-style="color:rgb(204, 204, 204);font-size:32rpx" maxlength="1000" bindblur="bindTextAreaBlur"></textarea>
-      <view style="display:flex;margin-top:20rpx;padding-left: 20rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;">
-        <input placeholder="请输入拼团人数" type="text" />
+      <textarea class="input" placeholder="写点什么吧..." data-gater="form.title" placeholder-style="color:rgb(204, 204, 204);font-size:32rpx" maxlength="50" bindinput="bindTextArea"></textarea>
+      <view class="form-item">
+        <date-time-picker class="date-time-picker" data-gater="form.competitionDate" mode="dateminute" name="starTime" type='text' value="{{form.competitionDate}}" bindchange="hourChange">
+          <view style="{{form.competitionDate ? 'color:#000':'color:#cccccc'}}" class="show-date-time-box">{{ form.competitionDate ? form.competitionDate:'请选择主题开始时间'}}</view>
+        </date-time-picker>
       </view>
-      <view style="display:flex;margin-top:20rpx;padding-left: 20rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;">
-        <input placeholder="请输入价格" type="text" />
+      <view class="form-item">
+        <input bindinput="bindInput" data-gater="form.maximumNumber" placeholder-style="color:#cccccc" placeholder="请输入拼团人数" type="number" />
       </view>
-   
-      <my-picker class="my-picker" />
-      
+      <view class="form-item">
+        <input bindinput="bindInput" data-gater="form.price" placeholder-style="color:#cccccc" placeholder="请输入价格" type="number" />
+      </view>
+      <my-picker class="my-picker" data-gater="form.typeId" bindchange="typeIdChange" />
       <view style="display:flex;margin-top:16rpx">
-        <upload-img bind:getUploaderList="getUploaderList"></upload-img>
+        <upload-img data-gater="form.pictures" bind:getUploaderList="getUploaderList"></upload-img>
       </view>
-    </form>
   <!-- 发布按钮 -->
   <view class="submit-btn" bindtap='submitData'>发布</view>
 

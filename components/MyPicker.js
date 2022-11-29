@@ -34,6 +34,7 @@ Component({
           this.setData({
             pickerIndex: e.detail.value[0]
           })
+          this.triggerEvent('change', { value: this.data.pickerIndex })
       },
       // picker显示
       pickerShow: function () {

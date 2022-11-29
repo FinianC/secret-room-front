@@ -1,7 +1,7 @@
 /* compontes/myPicker/myPicker.wxss */
 
 .picker-title{
-  display: flex;
+  display:flex;margin-top:20rpx;padding-left: 32rpx;background-color: #fff;height: 80rpx;padding-top: 40rpx;
 }
 
 .mheader-right-text{
@@ -10,14 +10,11 @@
 .mheader-right-icon{
   margin-left: 30rpx;
 }
-.mheader-right-icon image{
+.mheader-right-icon .image{
   width:8px;
   height: 4.5px;
   vertical-align: middle;
 }
-
-
-
 .picker-wrap{
   width:100vw;
   height: 100vh;
@@ -67,7 +64,7 @@
 /* 中间选择框样式 */
 .indicator{
   width:208rpx;
-  height: 60rpx;
+  height: 80rpx;
   left:50%;
   transform: translateX(-50%);
   text-align: center;
