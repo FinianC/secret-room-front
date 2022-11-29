@@ -1,0 +1,42 @@
+/* pages/group/group.wxss */
+.page{
+  width: 100%;
+  height: 100%;
+  min-height: 1290rpx;
+}
+.groups{
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.group-avatar{
+  min-width: 130rpx;
+  padding: 15rpx;
+  height: 130rpx;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+.group-info{
+  width: 100%;
+  height: 130rpx;
+  padding: 15rpx;
+}
+.group-name{
+  padding-top:15rpx;
+  font-size: 32rpx;
+}
+.group-message{
+  padding-top:17rpx;
+  font-size: 26rpx;
+  color: #c5c9ce;
+}
+.group-last-time{
+  min-width: 95rpx;
+  padding-top:80rpx;
+  font-size: 22rpx;
+  color: #c5c9ce;
+}

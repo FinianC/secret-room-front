@@ -52,6 +52,12 @@
           "pathName": "pages/profile/edit",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/group/group",
+          "pathName": "pages/group/group",
+          "query": "",
+          "scene": null
         }
       ]
     }

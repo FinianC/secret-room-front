@@ -1,4 +1,4 @@
-// pages/topic/topic.js
+// pages/group.js
 Page({
 
   /**

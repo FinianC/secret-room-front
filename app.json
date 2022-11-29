@@ -8,10 +8,11 @@
     "pages/profile/profile",
     "pages/comment/comment",
     "pages/write/write",
-    "pages/profile/edit"
+    "pages/profile/edit",
+    "pages/group",
+    "pages/group/group"
   ],
   "window": {
-    "navigationStyle":"custom",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
@@ -26,6 +27,18 @@
         "text": "拼场大厅",
         "iconPath": "images/home_disable.png",
         "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "text": "车队群聊",
+        "iconPath": "images/group.png",
+        "selectedIconPath": "images/group_active.png"
+      },
+      {
+        "pagePath": "pages/topic/topic",
+        "text": "密室",
+        "iconPath": "images/topic.png",
+        "selectedIconPath": "images/topic_active.png"
       },
       {
         "pagePath": "pages/profile/profile",
