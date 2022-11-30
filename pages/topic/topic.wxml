@@ -1,2 +1,9 @@
 <!--pages/topic/topic.wxml-->
-<text>暂未开放</text>
+<view class="page">
+  <view class="my_order_page">
+    <InputSearch bindsearchVal="handleSearchVal" holderText="请输入密室名称"></InputSearch>
+  </view>
+  <view class="store">
+    <view class="store-item">1</view>
+  </view>
+</view>

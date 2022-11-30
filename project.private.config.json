@@ -6,6 +6,15 @@
   },
   "libVersion": "2.25.4",
   "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
     "miniprogram": {
       "list": [
         {
@@ -47,6 +56,12 @@
         {
           "name": "pages/group/group",
           "pathName": "pages/group/group",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/topic/topic",
+          "pathName": "pages/topic/topic",
           "query": "",
           "scene": null
         }

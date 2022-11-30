@@ -1,0 +1,17 @@
+<!--搜索框-->
+<view class="input_search_bar">
+  <view class="input_search_bar_form">
+    <!--点击之后，出现input框 -->
+    <view class="input_search_bar_box">
+      <icon class="order_icon_search_in_box" type="search" size="20"></icon>
+      <input type="text" class="input_search_bar_input" maxlength="15" placeholder="{{holderText}}" value="{{inputVal}}"
+        bindinput="inputTyping" />
+      <!--输入款字数大于0，则显示清除按钮 -->
+      <view class="order_icon_clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="20"></icon>
+      </view>
+    </view>
+  </view>
+  <!--动态出现的“搜索”键 -->
+  <view class="input_search_bar_cancel_btn" bindtap="searchBtn">搜索</view>
+</view>

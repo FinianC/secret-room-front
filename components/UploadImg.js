@@ -1,4 +1,5 @@
 // components/case-imgs/index.js
+import ipConfig from '../utils/ipConfig'
 Component({
   /**
    * 组件的属性列表
@@ -67,10 +68,18 @@ Component({
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function(res) {
+          console.log(res);
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           let tempFilePaths = res.tempFilePaths;
           let uploaderList = that.data.uploaderList.concat(tempFilePaths);
-          console.log(uploaderList);
+          wx.uploadFile({
+            filePath:tempFilePaths[0],
+            name: 'file',
+            url: `${ipConfig.baseUrl}/file/upload`,
+            success(response){
+              console.log(JSON.parse(response.data));
+            }
+          })
           if (!that.properties.type) {
             //开启图文咨询
             if (uploaderList.length == 6) {
