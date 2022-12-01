@@ -1,4 +1,4 @@
-// pages/group/group.js
+// pages/group/groupICQ.js
 Page({
 
   /**
@@ -6,12 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  handleGroupTap:function(){
-    wx.navigateTo({
-      url: '/pages/group/groupICQ'
-    })
   },
 
   /**

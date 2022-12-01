@@ -65,7 +65,7 @@ Page({
   getUploaderList:function(e){
     console.log(e);
     this.setData({
-      [`${e.currentTarget.dataset.gater}`]:JSON.stringify(e.detail.uploaderList) 
+      [`${e.currentTarget.dataset.gater}`]:JSON.stringify(e.detail.uploaderListId) 
     })
   },
 

@@ -64,6 +64,12 @@
           "pathName": "pages/topic/topic",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/group/groupICQ",
+          "pathName": "pages/group/groupICQ",
+          "query": "",
+          "scene": null
         }
       ]
     }

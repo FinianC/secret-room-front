@@ -9,7 +9,8 @@
     "pages/comment/comment",
     "pages/write/write",
     "pages/profile/edit",
-    "pages/group/group"
+    "pages/group/group",
+    "pages/group/groupICQ"
   ],
   "window": {
     "backgroundTextStyle": "dark",

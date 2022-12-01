@@ -1,6 +1,6 @@
 <!--pages/group/group.wxml-->
 <view class="page">
-  <view class="groups">
+  <view class="groups" bindtap="handleGroupTap">
     <view class="group-avatar">
       <image src="/images/duck.jpg"></image>
     </view>

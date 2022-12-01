@@ -4,6 +4,7 @@
   height: 100%;
 }
 .my_order_page{
+  padding-top: 20rpx;
   padding-bottom: 20rpx;
   background-color: #fff;
 }
@@ -17,4 +18,33 @@
   background-color: #fff;
   border-radius: 5rpx;
   padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.store-picture{
+  width: 180rpx;
+  height: 180rpx;
+  border: 1px solid rgba(0, 0, 0,0.05);
+  border-radius: 8rpx;
+}
+.store-p{
+  width: 100%;
+  height: 100%;
+}
+.store-info{
+  width: 470rpx;
+  height: 180rpx;
+  padding-left: 20rpx;
+}
+.store-topic{
+  width: 100%;
+  height: 300rpx;
+}
+.store-name{
+  font-size: 34rpx;
+}
+.store-address{
+  padding-top: 5rpx;
+  font-size: 28rpx;
+  color: #a6a6a6;
 }

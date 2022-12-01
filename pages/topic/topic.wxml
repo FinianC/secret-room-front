@@ -4,6 +4,17 @@
     <InputSearch bindsearchVal="handleSearchVal" holderText="请输入密室名称"></InputSearch>
   </view>
   <view class="store">
-    <view class="store-item">1</view>
+    <view class="store-item">
+      <view class="store-picture">
+        <image class="store-p" src="/images/duck.png"></image>
+      </view>
+      <view class="store-info">
+        <view class="store-name">逃鸭沉浸式密室</view>
+        <view class="store-address">上海市徐汇区瑞金南路500号</view>
+      </view>
+      <view class="store-topic">
+      
+      </view>
+    </view>
   </view>
 </view>

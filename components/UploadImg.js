@@ -20,6 +20,7 @@ Component({
    */
   data: {
     uploaderList: [],
+    uploaderListId:[],
     uploaderNum: 0,
     showUpload: true,
     uploaderNowNum:0
@@ -77,39 +78,48 @@ Component({
             name: 'file',
             url: `${ipConfig.baseUrl}/file/upload`,
             success(response){
-              console.log(JSON.parse(response.data));
+              let back = JSON.parse(response.data)
+              let backId = back.data.id
+              that.setData({
+                uploaderListId:that.data.uploaderListId.concat(backId)
+              })
+              console.log(that.data.uploaderListId);
+              if (!that.properties.type) {
+                //开启图文咨询
+                if (uploaderList.length == 6) {
+                  that.setData({
+                    showUpload: false
+                  })
+                }
+                that.setData({
+                  uploaderList: uploaderList,
+                  uploaderNum: uploaderList.length,
+                })
+                that.triggerEvent('getUploaderList', {
+                  uploaderList: uploaderList,
+                  uploaderNowNum: that.data.uploaderNowNum,
+                  uploaderListId: that.data.uploaderListId
+                })
+              }else{
+                // 补充咨询
+                if (uploaderList.length + that.properties.uploaderNum === 6) {
+                  that.setData({
+                    showUpload: false
+                  })
+                }
+                that.setData({
+                  uploaderList: uploaderList,
+                  uploaderNowNum: uploaderList.length + that.properties.uploaderNum,
+                })
+                that.triggerEvent('getUploaderList', {
+                  uploaderList: uploaderList,
+                  uploaderNowNum: that.data.uploaderNowNum,
+                  uploaderListId: that.data.uploaderListId
+                })
+              }
             }
           })
-          if (!that.properties.type) {
-            //开启图文咨询
-            if (uploaderList.length == 6) {
-              that.setData({
-                showUpload: false
-              })
-            }
-            that.setData({
-              uploaderList: uploaderList,
-              uploaderNum: uploaderList.length,
-            })
-            that.triggerEvent('getUploaderList', {
-              uploaderList: uploaderList
-            })
-          }else{
-            // 补充咨询
-            if (uploaderList.length + that.properties.uploaderNum === 6) {
-              that.setData({
-                showUpload: false
-              })
-            }
-            that.setData({
-              uploaderList: uploaderList,
-              uploaderNowNum: uploaderList.length + that.properties.uploaderNum
-            })
-            that.triggerEvent('getUploaderList', {
-              uploaderList: uploaderList,
-              uploaderNowNum: that.data.uploaderNowNum
-            })
-          }
+          
  
         }
       })
