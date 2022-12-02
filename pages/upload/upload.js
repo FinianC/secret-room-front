@@ -81,8 +81,15 @@ Page({
   },
 
   submitData:async function(event) {
-    console.log(event);
-    const res = await releaseMotorcade(this.data.form)
+    await releaseMotorcade(this.data.form)
+    wx.showToast({
+      title: '发布成功',
+      icon:'success',
+      duration:1000
+    })
+    wx.switchTab({
+      url: '../home/home'
+    })
   }
 
 })

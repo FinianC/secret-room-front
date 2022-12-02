@@ -5,8 +5,6 @@
   background-color: white;
   margin-bottom: 20rpx;
   margin-top: 20rpx;
-  display: flex;
-  flex-direction: row;
   padding-top: 16rpx;
   padding-bottom: 16rpx;
 }
@@ -14,12 +12,14 @@
 .comment-content {
   justify-content: space-between;
   padding-bottom: 12rpx;
+  width:100%;
+  display:flex;
+  flex-direction:column;
 }
 
 .expand-btn {
   font-size:28rpx;
   color:rgb(41,153,255);
-  margin-top: 10rpx;
 }
 
 .comment-text {
@@ -31,6 +31,7 @@
   word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp:3;
+  padding: 5rpx 10rpx;
 }
 
 .comment-text-container {
@@ -69,4 +70,22 @@
   justify-content: center;
   border-radius: 50rpx;
   background-color:rgba(41,153,255,0.8);
+}
+.showToast{
+  color: #a6a6a6;
+  font-size: 28rpx;
+  padding: 0 0 10rpx 0;
+  text-align: center;
+}
+.join-car{
+  font-size: 32rpx;
+  padding: 5rpx 10rpx;
+  display: flex;
+  justify-content:space-around;
+}
+.join-icon{
+  width: 45rpx;
+  height: 45rpx;
+  position: relative;
+  top: 11rpx;
 }
