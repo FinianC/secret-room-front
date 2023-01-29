@@ -31,6 +31,7 @@ Component({
   methods: {  // 组件方法
       // 选择picker数据
       bindChange: function (e) {
+        console.log(e)
           this.setData({
             pickerIndex: e.detail.value[0]
           })
@@ -48,6 +49,7 @@ Component({
               pickerHidden: true,
               pickerSelected: this.data.pickerIndex
           })
+          this.triggerEvent('pickerConfirm', { value: this.data.pickerArray[this.data.pickerIndex].id})
       },
       //点击取消
       pickerCancel: function () {

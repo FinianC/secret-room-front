@@ -1,7 +1,7 @@
 // pages/upload/upload.js
 import UploadImg from '../../components/UploadImg'
 
-import {releaseMotorcade,getFleetType} from '../../api/index'
+import {releaseMotorcade,getThemeList} from '../../api/index'
 const recorderManager = wx.getRecorderManager();
 const app = getApp()
 Page({
@@ -19,20 +19,30 @@ Page({
     //0表示未播放，1表示正在播放，2表示播放暂停
     playerState: 0,
     fleetType:[],
+    pickerIndex:0,
     index:1,
     starTime:'',
     form:{
-
+      
     }
   },
 
   hourChange: function (e) {
+    console.log(e)
     this.setData({
-      [`${e.currentTarget.dataset.gater}`]: e.detail.value
+      [`${e.currentTarget.dataset.gater}`]: e.detail.value+':00'
     })
   },
 
   typeIdChange:function(e){
+    console.log(e)
+    // this.setData({
+    //   [`${e.currentTarget.dataset.gater}`]: parseInt(e.detail.value)
+    // })
+  },
+
+  pickerConfirm:function(e){
+    console.log(e)
     this.setData({
       [`${e.currentTarget.dataset.gater}`]: parseInt(e.detail.value)
     })
@@ -42,9 +52,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-    const res = await getFleetType()
+    const res = await getThemeList()
     this.setData({
-      fleetType: res.data
+      fleetType: res.data,
+      form:{
+        themeId: res.data[0].id
+      }
     })
   },
 

@@ -1,6 +1,9 @@
 // pages/home/home.js
 import {getMotorcadeList} from '../../api/index'
+
+import {join,leave} from '../../api/home'
 const moment = require('../../utils/moment.js')
+import { getAppUser} from '../../utils/token'
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 
 let current = 1
@@ -22,7 +25,9 @@ Page({
       "current": 1,
       "pageSize": 5,
     },
-    showToast:false
+    userInfo:{},
+    showToast:false,
+    enablePullDownRefresh:true
   },
 
   /**
@@ -39,6 +44,10 @@ Page({
     this.getQueryPageList()
   },
   onLoad: function (options) {
+    let userInfo = getAppUser();
+    this.setData({
+      userInfo
+    })
     this.getQueryPageList()
   },
   // 查询分页列表
@@ -71,7 +80,6 @@ Page({
   },
 
   getArticleData:function(){
-    
   },
 
   jumpToUpload:function(event){
@@ -79,6 +87,41 @@ Page({
       url: '../upload/upload',
     })
   },
+ /**
+  * 加入车队
+  * @param {车队id} e 
+  */
+  handleJoinCar: async function(e){
+    const res = await join({'motorcadeId':e.currentTarget.dataset.motorcadeid})
+    this.updateFleetInfo(res.data)
+    console.log(res)
+  },
+ /** 
+  * 更新车队信息
+  * @param {车队信息} fleet 
+  */
+  updateFleetInfo: function(fleet){
+    let newList = this.data.articles;
+    for(let i = 0 ;i<newList.length ;i++){
+      if(newList[i].id == fleet.id ){
+        newList[i] = fleet
+        newList[i].pictures = JSON.parse(fleet.pictures)
+        break;
+      }
+    }
+    this.setData({
+      articles:newList
+    })
+  },
+ /**
+  * 退出车队
+  * @param {车队id} e 
+  */
+ handleLeaveCar: async function(e){
+  const res = await leave({'motorcadeId':e.currentTarget.dataset.motorcadeid})
+  this.updateFleetInfo(res.data)
+},
+  
 
   
 
@@ -101,7 +144,14 @@ Page({
   },
 
   onPullDownRefresh:function(event){
-    this.getArticleData();
+    this.setData({
+      searchForm:{
+        current:1,
+        pageSize:5
+      },
+      articles:[]
+    })
+    this.getQueryPageList();
   },
 
   onShareAppMessage: function (res) {

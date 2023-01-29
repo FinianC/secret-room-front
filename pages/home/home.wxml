@@ -1,15 +1,16 @@
 <!--pages/home/home.wxml-->
 <!-- 评论列表,可以是图片，可以是文字，可以是声音 -->
+
 <view style="width: 100%;height: 800rpx;background-color: whitesmoke;">
-  <scroll-view scroll-y>
+  <wxs src="../../utils/util.wxs" module="tools" />
+  <scroll-view scroll-y  >
     <view wx:key="id" wx:for="{{articles}}" bindtap='jumpToDetailCmt'>
       <view class="comment-container">
-        
-        <!-- 头像 -->
-        <view style="width:140rpx;height:70rpx;display:flex;justify-content:center;">
-          <image class="comment-avatar" src="{{item.headerImg}}"></image>
-          <text style="font-size:28rpx;height:70rpx;display:flex;align-items:center;color:rgb(89,93,96);padding-left: 10rpx;">{{item.nickname}}</text>
 
+        <!-- 头像 -->
+        <view style="width:230rpx;height:85rpx;display:flex;justify-content:left;margin-left:7px;">
+          <image class="comment-avatar" src="{{  tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}"></image>
+          <text style="font-size:28rpx;height:70rpx;display:flex;align-items:center;color:rgb(89,93,96);padding-left: 14rpx;">{{item.nickname}}</text>
         </view>
 
         <!-- 名称 -->
@@ -19,7 +20,7 @@
           <block wx:if="{{item.title}}">
             <block wx:if="{{currentExpandIndex!=index}}">
               <!-- <view class="comment-text-container" bindtap='expandText' data-index="{{index}}"> -->
-                <text class="comment-text">{{item.title}}</text>
+              <text class="comment-text">{{item.title}}</text>
               <!-- </view> -->
             </block>
             <block wx:if="{{currentExpandIndex==index}}">
@@ -30,20 +31,53 @@
           </block>
           <!-- 图片内容 -->
           <block wx:if="{{item.pictures.length > 0}}">
-            <view class="comment-image-container" wx:for="{{item.pictures}}" wx:for-item="imgItem" bindtap='previewBigImage' >
-              <image src="{{baseUrl + '/' +imgItem}}"  style="width:100%;height:100%" mode="aspectFill"></image>
+            <view class="comment-image-container" wx:for-item="imgItem" bindtap='previewBigImage'>
+              <image src="{{baseUrl + '/' +item.pictures[0]}}" style="width:100%;height:100%" mode="aspectFill"></image>
             </view>
           </block>
+          <!-- 已加入人员-->
+          <view class="joined">
+
+            <view class="user-info">
+           
+              <image class="joined-headImg " style="left:{{index*6+(index>0?15:0)}}px;z-index: {{index}};" wx:for="{{item.joinedMotorcadeVos}}" wx:key='index' 
+              src="{{tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}">{{item.headerImg.indexOf('t')}}</image>
+              <!-- <view class="user-nickname">{{item.nickname}}</view> -->
+            </view>
+            <view class="numberPeople">
+              <view class="blue">
+                {{item.joinedMotorcadeVos.length}}</view>/{{item.maximumNumber}}人 满<view class="blue">{{item.clusteringNumber}}</view>人开场
+            </view>
+          </view>
 
           <!-- 发布时间 -->
-          <text style="font-size:26rpx;color:rgb(197,201,206);margin-top:16rpx;padding: 5rpx 10rpx;">{{item.createTime}}</text>
-          <view class="join-car">
-            <view bindtap="handleJoinCar"><image class="join-icon" src="/images/joincar.png" ></image>加入车队</view>
-            <view bindtap="handleShare"><image class="join-icon" src="/images/share.png" ></image>分享车队</view>
+          <view>
+            <!-- <text style="font-size:24rpx;color:rgb(197,201,206);margin-top:16rpx;padding: 5rpx 10rpx;">发布时间: {{item.createTime}}</text> -->
+            <text style="font-size:30rpx;color:rgb(197,201,206);margin-top:16rpx;padding: 5rpx 10rpx;"> {{item.competitionDate}} 开始</text>
           </view>
-          
+
+          <view class="join-car">
+            <view>
+              <view wx:if="{{item.joined === 0}}" data-motorcadeId="{{item.id}}" bindtap="handleJoinCar">
+                <image class="join-icon" src="/images/joincar.png"></image>加入车队
+              </view>
+              <view wx:if="{{item.joined === 1 && userInfo.id  !== item.userId }}" data-motorcadeId="{{item.id}}" bindtap="handleLeaveCar">
+                <image class="join-icon" src="/images/joincar.png"></image>退出车队
+              </view>
+
+              <view wx:if="{{item.joined === 1 && userInfo.id  === item.userId }}" data-motorcadeId="{{item.id}}"  bindtap="handleJoinCar">
+                <image class="join-icon" src="/images/joincar.png"></image>拼车完成
+              </view>
+
+            </view>
+
+            <view bindtap="handleShare">
+              <image class="join-icon" src="/images/share.png"></image>分享车队
+            </view>
+          </view>
+
         </view>
- 
+
       </view>
     </view>
   </scroll-view>

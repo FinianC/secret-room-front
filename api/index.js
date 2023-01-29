@@ -44,3 +44,12 @@ export function getFleetType() {
     method: 'GET'
   })
 }
+/**
+ * 获取车队主题列表
+ */
+export function getThemeList() {
+  return request({
+    url: '/theme/list',
+    method: 'GET'
+  })
+}

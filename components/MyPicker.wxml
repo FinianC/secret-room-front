@@ -1,7 +1,7 @@
 <!--compontes/myPicker/myPicker.wxml-->
 <view class='wrap' >
     <view class='picker-title' bindtap='pickerShow'>
-        <text class='mheader-right-text'>{{pickerArray[pickerSelected]}}</text>
+        <text class='mheader-right-text'>{{pickerArray[pickerSelected].name}}</text>
     </view>
 
     <view catchtap='catchWrap' hidden='{{pickerHidden}}' catchtouchmove = "doNotMove" class='picker-wrap'>
@@ -14,7 +14,7 @@
             indicator-class="indicator"  
             catchchange="bindChange">
                 <picker-view-column class="picker-column">
-                    <view wx:for="{{pickerArray}}" wx:key="pickerKey" style="line-height: 40px">{{item}}</view>
+                    <view wx:for="{{pickerArray}}" wx:key="pickerKey" style="line-height: 40px">{{item.name}}</view>
                 </picker-view-column>
             </picker-view>
         </view>

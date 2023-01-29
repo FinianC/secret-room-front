@@ -13,7 +13,7 @@
       <view class="form-item">
         <input bindinput="bindInput" data-gater="form.price" placeholder-style="color:#cccccc" placeholder="请输入价格" type="number" />
       </view>
-      <my-picker class="my-picker" data-gater="form.typeId" bindchange="typeIdChange" />
+      <my-picker class="my-picker" data-gater="form.themeId" pickerArray="{{fleetType}}"  bindchange="typeIdChange" bind:pickerConfirm ="pickerConfirm" />
       <view style="display:flex;margin-top:16rpx">
         <upload-img data-gater="form.pictures" bind:getUploaderList="getUploaderList"></upload-img>
       </view>

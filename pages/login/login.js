@@ -1,6 +1,6 @@
 // pages/login/login.js
 import { getOpenId } from '../../api/index'
-import { setAppToken } from '../../utils/token'
+import { setAppToken ,setAppUser} from '../../utils/token'
 Page({
 
   /**
@@ -35,9 +35,11 @@ Page({
               success:async function(returned) {
                 console.log(returned);
                 const respones = await getOpenId({code : res.code,headerImg:returned.userInfo.avatarUrl,nickname:returned.userInfo.nickName})
+                console.log(respones);
                 await wx.setStorageSync('headerUrl', returned.userInfo.avatarUrl)
                 await wx.setStorageSync('nickName', returned.userInfo.nickName)
                 await setAppToken(respones?.data?.token || {})
+                await setAppUser(respones?.data?.user || {})
               }
             })
             wx.switchTab({
