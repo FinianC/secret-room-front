@@ -20,6 +20,8 @@
             <text style="font-size:28rpx;height:70rpx;align-items:center;color:rgb(89,93,96);padding-left: 14rpx;">{{item.nickname}}</text>
           </view>
           <view class="theme">
+            价格：<van-tag style="margin-right: 10px;" plain round   size="medium"  type="warning">{{item.price}}</van-tag>
+            
             主题：<van-tag plain round   size="medium"  type="warning">{{item.themeName}}</van-tag>
           </view>
 
