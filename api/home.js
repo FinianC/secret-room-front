@@ -21,10 +21,12 @@ export function leave(data) {
     data
   })
 }
-// // 获取车队类型
-// export function getFleetType() {
-//   return request({
-//     url: '/fleetType/list',
-//     method: 'GET'
-//   })
-// }
+/**
+ * 已存在 主题列表
+ */
+export function existsList() {
+  return request({
+    url: '/theme/existsList',
+    method: 'GET'
+  })
+}

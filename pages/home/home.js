@@ -1,7 +1,7 @@
 // pages/home/home.js
 import {getMotorcadeList} from '../../api/index'
 
-import {join,leave} from '../../api/home'
+import {join,leave,existsList} from '../../api/home'
 const moment = require('../../utils/moment.js')
 import { getAppUser} from '../../utils/token'
 const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -22,26 +22,49 @@ Page({
     playState:0,
     currentExpandIndex:-1,//当前展开的Index
     searchForm:{
-      "current": 1,
-      "pageSize": 5,
+      current: 1,
+      pageSize: 5,
+      title:"",
+      themeId:''
     },
+    flag:true,
+    synchronizationLock:true,
     userInfo:{},
     showToast:false,
-    enablePullDownRefresh:true
+    enablePullDownRefresh:true,
+    option1: [
+      { text: '全部商品', value: 0 },
+      { text: '新款商品', value: 1 },
+      { text: '活动商品', value: 2 },
+    ],
+    value1: -1,
   },
 
   /**
    * 生命周期函数--监听页面加载
+   * 
    */
-  onReachBottom: function() {
+  onReachBottom:async function() {
+
+    if(!this.data.flag) return 
+    if(!this.data.synchronizationLock) return
+    this.setData({
+      synchronizationLock:false
+    })
+   let  current = this.data.searchForm.current ;
     current ++ ;
     this.setData({
       searchForm:{
         current:current,
-        pageSize:5
+        pageSize:5,
+        title:this.data.searchForm.title,
+        themeId:this.data.searchForm.themeId
       }
     })
-    this.getQueryPageList()
+    await this.getQueryPageList();
+    this.setData({
+      synchronizationLock:true
+    })
   },
   onLoad: function (options) {
     let userInfo = getAppUser();
@@ -49,6 +72,7 @@ Page({
       userInfo
     })
     this.getQueryPageList()
+    // this.existsList()
   },
   // 查询分页列表
   getQueryPageList:async function(){
@@ -63,25 +87,61 @@ Page({
     })
     if(res.data.records.length <= 0){
       this.setData({
-        showToast:true
+        showToast:true,
+        flag:false
       })
-      return
+      return ;
     }
     let newList = lastList.concat(res.data.records)
     this.setData({
       articles:newList,
-      baseUrl:res.baseUrl
+      baseUrl:res.baseUrl,
+      flag:res.data.records.length == res.data.size
     })
   },
 
   onShow: function () {
     // this.getArticleData();
-    wx.startPullDownRefresh();
+    // wx.startPullDownRefresh();
+    this.existsList()
+  },
+
+  /**
+   * 获取已存在的主题
+   */
+  existsList:async function(){
+   const res =  await existsList();
+   let records = res.data;
+   let newArray = records.map(i => {
+    let item = {'text':i.name ,'value':i.id}
+    return item;
+    }) 
+    newArray.unshift({'text':'全部主题' ,'value':''})
+   this.setData({
+    option1:newArray
+   })
   },
 
   getArticleData:function(){
   },
-
+  /**
+   * 主题改变回调
+   * @param {value} e 
+   */
+  changTheme:function(e){
+    if(e.detail == this.data.value1) return
+    this.setQueryUp()
+    let searchForm = this.data.searchForm;
+    searchForm.themeId = e.detail
+    this.setData({
+      searchForm
+    })
+    this.getQueryPageList()
+  },
+/**
+ * 跳转发布车队
+ * @param {*} event 
+ */
   jumpToUpload:function(event){
     wx.navigateTo({
       url: '../upload/upload',
@@ -121,12 +181,39 @@ Page({
   const res = await leave({'motorcadeId':e.currentTarget.dataset.motorcadeid})
   this.updateFleetInfo(res.data)
 },
-  
+/**
+ * 搜索框查询车队
+ * @param {key word} e 
+ */
+onSearch:function (e){
+  let searchForm =  this.data.searchForm;
+  searchForm.title = e.detail;
+  this.setData({
+    searchForm
+  })
+  this.setQueryUp()
+  this.getQueryPageList();
+},
+/**
+ * 取消搜索
+ * @param {key word} e 
+ */
+onCancel:function (e){
+  let searchForm =  this.data.searchForm;
+  searchForm.title = e.detail;
+  this.setData({
+    searchForm
+  })
+  this.setQueryUp()
+  this.getQueryPageList();
+},
 
   
-
+  /**
+   * 跳转详情
+   */
   jumpToDetailCmt:function(){
-
+      
   },
 
   expandText:function(event){
@@ -142,16 +229,29 @@ Page({
       urls: [event.currentTarget.id] // 需要预览的图片http链接列表
     })
   },
-
+  /**
+   * 下拉刷新
+   * @param {} event 
+   */
   onPullDownRefresh:function(event){
+    this.setQueryUp();
+    this.getQueryPageList();
+  },
+  /**
+   * 查询参数初始化
+   */
+  setQueryUp :function(){
     this.setData({
       searchForm:{
         current:1,
-        pageSize:5
+        pageSize:5,
+        title:this.data.searchForm.title,
+        themeId:this.data.searchForm.themeId
       },
+      flag:true,
+      synchronizationLock:true,
       articles:[]
     })
-    this.getQueryPageList();
   },
 
   onShareAppMessage: function (res) {

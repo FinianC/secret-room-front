@@ -2,7 +2,7 @@ import { getAppToken, removeAppToken, removeAppUser, getAppKey } from './token.j
 import ipConfig from './ipConfig.js'
 
 function request(options) {
-  console.log(options);
+ 
   var method = options.method || 'GET';
   var app_token = getAppToken() || ''
 

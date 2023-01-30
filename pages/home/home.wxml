@@ -3,19 +3,31 @@
 
 <view style="width: 100%;height: 800rpx;background-color: whitesmoke;">
   <wxs src="../../utils/util.wxs" module="tools" />
-  <scroll-view scroll-y  >
+  <!-- 搜索框-->
+  <van-search value="{{ searchForm.title }}" placeholder="请输入车队关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+  <!-- 主题下拉框 -->
+  <van-dropdown-menu active-color="#1989fa" z-index="30" title="11">
+    <van-dropdown-item bind:change="changTheme" value="{{ searchForm.themeId }}" options="{{ option1 }}" />
+  </van-dropdown-menu>
+  <!-- 车队信息内容-->
+  <scroll-view scroll-y>
     <view wx:key="id" wx:for="{{articles}}" bindtap='jumpToDetailCmt'>
       <view class="comment-container">
-
         <!-- 头像 -->
-        <view style="width:230rpx;height:85rpx;display:flex;justify-content:left;margin-left:7px;">
-          <image class="comment-avatar" src="{{  tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}"></image>
-          <text style="font-size:28rpx;height:70rpx;display:flex;align-items:center;color:rgb(89,93,96);padding-left: 14rpx;">{{item.nickname}}</text>
+        <view style="height:85rpx;justify-content:left;margin:4px 0px 0px 9px;">
+          <view class="lead-headImg">
+            <image class="comment-avatar" src="{{  tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}"></image>
+            <text style="font-size:28rpx;height:70rpx;align-items:center;color:rgb(89,93,96);padding-left: 14rpx;">{{item.nickname}}</text>
+          </view>
+          <view class="theme">
+            主题：<van-tag plain round   size="medium"  type="warning">{{item.themeName}}</van-tag>
+          </view>
+
         </view>
+        <van-divider />
 
         <!-- 名称 -->
         <view class="comment-content">
-
           <!-- 文字内容 -->
           <block wx:if="{{item.title}}">
             <block wx:if="{{currentExpandIndex!=index}}">
@@ -39,9 +51,8 @@
           <view class="joined">
 
             <view class="user-info">
-           
-              <image class="joined-headImg " style="left:{{index*6+(index>0?15:0)}}px;z-index: {{index}};" wx:for="{{item.joinedMotorcadeVos}}" wx:key='index' 
-              src="{{tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}">{{item.headerImg.indexOf('t')}}</image>
+
+              <image class="joined-headImg " style="left:{{index*6+(index>0?15:0)}}px;z-index: {{index}};" wx:for="{{item.joinedMotorcadeVos}}" wx:key='index' src="{{tools.indexOf(item.headerImg,'http')? item.headerImg:baseUrl+item.headerImg}}">{{item.headerImg.indexOf('t')}}</image>
               <!-- <view class="user-nickname">{{item.nickname}}</view> -->
             </view>
             <view class="numberPeople">
@@ -61,11 +72,14 @@
               <view wx:if="{{item.joined === 0}}" data-motorcadeId="{{item.id}}" bindtap="handleJoinCar">
                 <image class="join-icon" src="/images/joincar.png"></image>加入车队
               </view>
+              <!-- <view wx:if="{{item.joined === null}}" data-motorcadeId="{{item.id}}" bindtap="handleJoinCar">
+                <image class="join-icon" src="/images/joincar.png"></image>加入车队
+              </view> -->
               <view wx:if="{{item.joined === 1 && userInfo.id  !== item.userId }}" data-motorcadeId="{{item.id}}" bindtap="handleLeaveCar">
                 <image class="join-icon" src="/images/joincar.png"></image>退出车队
               </view>
 
-              <view wx:if="{{item.joined === 1 && userInfo.id  === item.userId }}" data-motorcadeId="{{item.id}}"  bindtap="handleJoinCar">
+              <view wx:if="{{item.joined === 1 && userInfo.id  === item.userId }}" data-motorcadeId="{{item.id}}" bindtap="handleJoinCar">
                 <image class="join-icon" src="/images/joincar.png"></image>拼车完成
               </view>
 

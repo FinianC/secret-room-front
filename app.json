@@ -12,6 +12,7 @@
     "pages/group/group",
     "pages/group/groupICQ"
   ],
+
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
