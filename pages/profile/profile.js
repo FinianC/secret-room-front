@@ -1,5 +1,5 @@
 // pages/profile/profile.js
-
+import { getAppUser} from '../../utils/token'
 const app = getApp();
 
 Page({
@@ -10,6 +10,7 @@ Page({
   data: {
     userAvatar:'',
     userName:'密逃',
+    user:{}
   
   },
 
@@ -21,15 +22,18 @@ Page({
     // wx.showLoading({
     //   title: '获取登录状态',
     // })
-    let headUrl = wx.getStorageSync('headerUrl')
-    let nickName = wx.getStorageSync('nickName')
+  },
+  async onShow(){
+    let user = await getAppUser();
+    let baseUrl = wx.getStorageSync('baseUrl')
     // 调用小程序 API，得到用户信息
+    user.headerImg = user.headerImg.indexOf('http') != -1 ?user.headerImg : baseUrl+user.headerImg;
+    console.log(user)
     this.setData({
-      userAvatar: headUrl,
-      userName : nickName,
+      user,
+      baseUrl
     })
   },
-
   // 跳转编辑页面
   handleEdit:function(){
     wx.navigateTo({

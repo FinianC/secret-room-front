@@ -1,12 +1,20 @@
 <!--pages/profile/edit.wxml-->
+<wxs src="../../utils/util.wxs" module="tools" />
 <view>
-  <input placeholder-style="color:#ffffff" placeholder="手机号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" bindblur="handleBlur" id="phone" data-gater="form.phone" model:value="{{form.phone}}">{{form.phone}}</input>
-  <input placeholder-style="color:#ffffff" placeholder="微信号码" style="font-size:32rpx;color:rgb(51,51,51);margin-top:28rpx;" bindblur="handleBlur" id="wechart" data-gater="form.wechatNumber" model:value="{{form.wechatNumber}}">{{form.wechatNumber}}</input>
-  <view style="font-size:32rpx;color:#fff;margin-top:28rpx;width: 100%;">
-  <radio-group class="radio-sex" data-gater="form.sex" bindchange="handleRadioChange">
-    <radio color="#2999ff" value="1" checked="{{ form.sex ===1? true:false }}">男</radio>
-    <radio color="#2999ff" value="0" checked="{{ form.sex ===0? true:false }}">女</radio>
-  </radio-group>
+  <view style="border-top:1px solid #e7e7e7">
+    <van-cell-group inset>
+     
+      <van-cell center title="头像" is-link>
+ 
+        <van-image radius="3px" class="headImg" width="2.5rem" height="2.5rem" src="{{ user.headerImg }}" />
+      </van-cell>
+      <van-field label="昵称" value="{{ user.nickname }}" input-align="right" data-gater="nickname" placeholder="请输入昵称"  bind:change="onChange" />    
+      <van-field label="微信号" value="{{ user.wechatNumber }}" input-align="right" data-gater="wechatNumber" placeholder="请输入微信号"  bind:change="onChange" />    
+      <van-cell title="性别" class="{{user.sex !=null ? 'value-class_tow' :'' }}" is-link value="{{user.sex==null?'':user.sex== 1 ?'女':'男' }}" bind:click="clickSex" />
+    </van-cell-group>
+    <view class="updateTip">修改完成后请点击保存按钮</view>
+    <van-button block class="updateButton" bind:click="toUpdate" type="info">保存修改</van-button>
   </view>
+  <van-toast id="van-toast" />
+  <van-action-sheet show="{{ sexShow }}" actions="{{ actions }}" bind:close="sexOnClose" bind:select="sexOnSelect" />
 </view>
-<view class="bg-image"></view>

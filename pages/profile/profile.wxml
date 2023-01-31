@@ -1,19 +1,21 @@
 <!--pages/profile/profile.wxml-->
 <view class="container">
+  <wxs src="../../utils/util.wxs" module="tools" />
   <!-- 头像和名字 -->
   <view class="user-show">
-    <image class="avatar" style="margin-left: 20rpx;" src="{{userAvatar ? userAvatar:'https://secretescape.mynatapp.cc/secret/file/getFile/4'}}"></image>
+    <image class="avatar" style="margin-left: 20rpx;" src="{{ user.headerImg}}"></image>
     <view style="font-size:38rpx;color:#fff;font-weight:550;margin-top:10rpx;margin-left: 30rpx;">
       <view>
-        {{userName ? userName:'密逃用户12306'}}
+        {{user.nickname }}
       </view>
       <view style="font-size:30rpx;margin-top:10rpx;display: flex;">
-        15297778157
-        <view class="sex-or-age" >
-          <image src="/images/girl.png"></image> 20
+        
+        <view class="sex-or-age {{user.sex == 1 ? 'girl': user.sex == 2 ? 'man':'smile' }} "  >
+          <image  wx:if="{{user.sex == 1}}" src="/images/girl.png"></image> 
+          <image  wx:if="{{user.sex == 2}}"  src="/images/man.png"></image>
+          <van-icon wx:if="{{user.sex == null}}" name="smile-o" />
         </view>
       </view>
-    
     </view>
     <view class="edit" bindtap="handleEdit">
     <image src="../../images/edit.png"></image>

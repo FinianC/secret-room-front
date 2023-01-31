@@ -24,7 +24,6 @@
             
             主题：<van-tag plain round   size="medium"  type="warning">{{item.themeName}}</van-tag>
           </view>
-
         </view>
         <van-divider />
 

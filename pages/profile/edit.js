@@ -1,5 +1,7 @@
 // pages/profile/edit.js
-import {updateUserInfo} from '../../api/index'
+import {updateUserInfo} from '../../api/profile_edit'
+import { getAppUser,setAppUser} from '../../utils/token'
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -10,23 +12,19 @@ Page({
       phone:'',
       wechatNumber:'',
       sex:1,
-    }
-  },
-
-  // 单选框性别修改
-  handleRadioChange:async function(e){
-    this.setData({
-      [`${e.currentTarget.dataset.gater}`]: parseInt(e.detail.value)
-    })
-    const res = await updateUserInfo(this.data.form)
-  },
-    // 输入框失去焦点时保存用户信息
-    handleBlur:async function(e){
-      this.setData({
-        [`${e.currentTarget.dataset.gater}`]: e.detail.value
-      })
-      const res = await updateUserInfo(this.data.form)
     },
+    sexShow:false,
+    actions: [
+      {
+        name: '男',
+        value:2
+      },
+      {
+        name: '女',
+        value:1
+      },
+    ],
+  },
     onShareAppMessage: function (res) {
       return {
         title: '密逃',
@@ -37,9 +35,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
-
+  getAppUser:async function(){
+    let user = await getAppUser();
+    let baseUrl = wx.getStorageSync('baseUrl')
+    console.log(baseUrl)
+    // 调用小程序 API，得到用户信息
+    user.headerImg = user.headerImg.indexOf('http') != -1 ?user.headerImg : baseUrl+user.headerImg;
+    console.log(user)
+    this.setData({
+      user,
+      baseUrl
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -51,7 +60,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getAppUser();
   },
 
   /**
@@ -87,5 +96,62 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+/**
+ * 点击性别单元格方法
+ */
+  clickSex:function(){
+    this.setData({
+      sexShow:true
+    })
+  },
+  /**
+   * 选择性别弹框关闭
+   */
+  sexOnClose() {
+    this.setData({ sexShow: false });
+  },
+  /**
+   * 选择性别方法
+   * @param {sex} event 
+   */
+  sexOnSelect(event){
+    console.log(event);
+    let user = this.data.user;
+    user.sex = event.detail.value
+    this.setData({
+      user
+    })
+  },
+  /**
+   * 输入框改变事件
+   * @param {input value} e 
+   */
+  onChange(e){
+    let user = this.data.user;
+    user[`${e.currentTarget.dataset.gater}`] = e.detail;
+    this.setData({
+      user
+    })
+  },
+  /**
+   * 保存修改
+   */
+  async toUpdate(){
+    let user = this.data.user;
+    let oldHeaderImg = user.headerImg
+    let arr  = user.headerImg.split(this.data.baseUrl);
+    if(arr.length > 1){
+      user.headerImg = arr[1];
+    }
+    const res =  await updateUserInfo(user);
+    Toast.success(res.message);
+    if(res.code == 200 ){
+      setAppUser(user)
+    }
+    user.headerImg = oldHeaderImg;
+    this.setData({
+      user
+    })
+  },
 })

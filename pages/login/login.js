@@ -38,6 +38,7 @@ Page({
                 console.log(respones);
                 await wx.setStorageSync('headerUrl', returned.userInfo.avatarUrl)
                 await wx.setStorageSync('nickName', returned.userInfo.nickName)
+                await wx.setStorageSync('baseUrl', respones.baseUrl)
                 await setAppToken(respones?.data?.token || {})
                 await setAppUser(respones?.data?.user || {})
               }
