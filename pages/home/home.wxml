@@ -80,7 +80,7 @@
                 <image class="join-icon" src="/images/joincar.png"></image>退出车队
               </view>
 
-              <view wx:if="{{item.joined === 1 && userInfo.id  === item.userId }}" data-motorcadeId="{{item.id}}" bindtap="handleJoinCar">
+              <view wx:if="{{item.joined === 1 && userInfo.id  === item.userId }}" data-motorcadeId="{{item.id}}" bindtap="handleCompleteCar">
                 <image class="join-icon" src="/images/joincar.png"></image>拼车完成
               </view>
 
@@ -101,5 +101,6 @@
   <view class="upload-btn" bindtap='jumpToUpload'>
     <image src="../../images/pencle.png" style="width:55rpx;height:55rpx"></image>
   </view>
-
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
 </view>

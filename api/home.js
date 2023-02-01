@@ -22,6 +22,17 @@ export function leave(data) {
   })
 }
 /**
+ * 拼车完成
+ * @param {*} data 
+ */
+export function complete(data) {
+  return request({
+    url: '/motorcade/user/complete',
+    method: 'POST',
+    data
+  })
+}
+/**
  * 已存在 主题列表
  */
 export function existsList() {

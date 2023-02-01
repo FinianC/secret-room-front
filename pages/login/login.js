@@ -41,10 +41,11 @@ Page({
                 await wx.setStorageSync('baseUrl', respones.baseUrl)
                 await setAppToken(respones?.data?.token || {})
                 await setAppUser(respones?.data?.user || {})
+
+                wx.switchTab({
+                  url: '../home/home',
+                })
               }
-            })
-            wx.switchTab({
-              url: '../home/home',
             })
           }catch(e){
             console.log(e);
