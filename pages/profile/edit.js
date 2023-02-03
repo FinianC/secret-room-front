@@ -155,4 +155,9 @@ Page({
       user
     })
   },
+  onClickShow() {
+    wx.navigateTo({
+      url: './headPortrait',
+    })
+  },
 })
