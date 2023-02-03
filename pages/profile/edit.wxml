@@ -17,10 +17,4 @@
   </view>
   <van-toast id="van-toast" />
   <van-action-sheet show="{{ sexShow }}" actions="{{ actions }}" bind:close="sexOnClose" bind:select="sexOnSelect" />
-  <!-- <van-overlay z-index="10"  class-name="headPortraitShow" show="{{ headPortraitShow }}" bind:click="">
-  <view class="wrapper">
-    
-    <van-image width="200" height="200" src="{{user.headerImg}}" />
-  </view>
-</van-overlay> -->
 </view>
