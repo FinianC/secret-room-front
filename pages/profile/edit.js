@@ -14,6 +14,7 @@ Page({
       sex:1,
     },
     sexShow:false,
+    headPortraitShow:false,
     actions: [
       {
         name: '男',
@@ -153,5 +154,14 @@ Page({
     this.setData({
       user
     })
+  },
+  onClickShow() {
+    wx.navigateTo({
+      url: './headPortrait',
+    })
+  },
+
+  onClickHide() {
+    this.setData({ headPortraitShow: false });
   },
 })

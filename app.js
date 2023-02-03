@@ -1,11 +1,10 @@
 //app.js
-
-
+import { getAppUser} from './utils/token'
 App({
   onLaunch: function () {
     
   },
   globalData: {
-    userInfo: null
-  }
+    user: null
+  },
 })
