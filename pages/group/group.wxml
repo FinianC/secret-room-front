@@ -1,33 +1,13 @@
 <!--pages/group/group.wxml-->
 <view class="page">
-  <view class="groups" bindtap="handleGroupTap">
-    <view class="group-avatar">
-      <image src="/images/duck.jpg"></image>
+  <view wx:for="{{chatList}}" class="groups" data-id="{{item.chatId}}" data-name="{{item.chatName}}" bindtap="handleGroupTap">
+    <view class="group-avatar {{item.unreadMessage?'unreadMessage':''}}" >
+      <image src="{{baseUrl+item.groupHeadImg}}"></image>
     </view>
     <view class="group-info">
-      <view class="group-name">密逃 冲压🦆</view>
-      <view class="group-message">刘安:我是傻逼</view>
+      <view class="group-name">{{item.chatName}}</view>
+      <view class="group-message">{{item.unreadMessage? '['+item.unreadMessageQuantity+' 消息]':'' }} {{item.nickname||""}} {{item.nickname==null?"":":"}} {{item.message || "" }}</view>
     </view>
-    <view class="group-last-time">1分钟前</view>
-  </view>
-  <view class="groups">
-    <view class="group-avatar">
-      <image src="/images/duck.jpg"></image>
-    </view>
-    <view class="group-info">
-      <view class="group-name">密逃 冲压🦆</view>
-      <view class="group-message">刘安:我是傻逼</view>
-    </view>
-    <view class="group-last-time">1分钟前</view>
-  </view>
-  <view class="groups">
-    <view class="group-avatar">
-      <image src="/images/duck.jpg"></image>
-    </view>
-    <view class="group-info">
-      <view class="group-name">密逃 冲压🦆</view>
-      <view class="group-message">刘安:杰哥傻逼</view>
-    </view>
-    <view class="group-last-time">1分钟前</view>
+    <view class="group-last-time">{{item.dateTime || ""}}</view>
   </view>
 </view>
