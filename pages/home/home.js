@@ -266,7 +266,9 @@ Page({
    * 跳转详情
    */
   jumpToDetailCmt: function () {
-
+    wx.navigateTo({
+      url: './detail',
+    })
   },
   /**
    * 拼车完成

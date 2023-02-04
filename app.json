@@ -10,9 +10,9 @@
     "pages/write/write",
     "pages/profile/edit",
     "pages/group/group",
-    "pages/group/groupICQ"
+    "pages/group/groupICQ",
+    "pages/home/detail"
   ],
-
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",

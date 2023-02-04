@@ -21,8 +21,7 @@
           </view>
           <view class="theme">
             价格：<van-tag style="margin-right: 10px;" plain round   size="medium"  type="warning">{{item.price}}</van-tag>
-            
-            主题：<van-tag plain round   size="medium"  type="warning">{{item.themeName}}</van-tag>
+            类型：<van-tag plain round   size="medium"  type="warning">{{item.themeName}}</van-tag>
           </view>
         </view>
         <van-divider />
