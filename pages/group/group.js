@@ -1,11 +1,5 @@
 // pages/group/group.js
-<<<<<<< HEAD
-import {
-  getGroupMsgContent
-} from '../../api/group'
-=======
 import {chatList} from "../../api/groupApi"
->>>>>>> b4d4cb39702fdfc882ab7e21bda5c64faf6612ae
 Page({
 
   /**
@@ -25,14 +19,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
-  onLoad: async function (options) {
-    const res = await getGroupMsgContent()
-    console.log(res);
-=======
   onLoad: function (options) {
     
->>>>>>> b4d4cb39702fdfc882ab7e21bda5c64faf6612ae
   },
 
   /**

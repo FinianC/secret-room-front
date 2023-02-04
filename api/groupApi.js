@@ -1,5 +1,5 @@
 /**
- * 通用api
+ * 群聊页面 通用api
  */
 import request from '../utils/request'
 // 修改用户信息
