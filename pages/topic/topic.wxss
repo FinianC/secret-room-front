@@ -44,7 +44,13 @@
   font-size: 34rpx;
 }
 .store-address{
-  padding-top: 5rpx;
+  padding-top: 10rpx;
   font-size: 28rpx;
   color: #a6a6a6;
+}
+.price{
+  margin-top: 10rpx;
+}
+.price-num{
+  color: #a73939;
 }
