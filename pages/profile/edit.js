@@ -14,6 +14,7 @@ Page({
       sex:1,
     },
     sexShow:false,
+    headPortraitShow:false,
     actions: [
       {
         name: '男',
@@ -60,6 +61,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.setNavigationBarTitle({
+      title: "个人信息修改"
+  })
     this.getAppUser();
   },
 
@@ -152,6 +156,11 @@ Page({
     user.headerImg = oldHeaderImg;
     this.setData({
       user
+    })
+  },
+  onClickShow() {
+    wx.navigateTo({
+      url: './headPortrait',
     })
   },
 })

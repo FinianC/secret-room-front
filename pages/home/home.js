@@ -115,6 +115,9 @@ Page({
   },
 
   onShow: async function () {
+    wx.setNavigationBarTitle({
+      title: "拼场大厅"
+  })
     let userInfo = await getAppUser();
     this.setData({
       userInfo

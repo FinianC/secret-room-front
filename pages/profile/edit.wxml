@@ -4,11 +4,11 @@
   <view style="border-top:1px solid #e7e7e7">
     <van-cell-group inset>
      
-      <van-cell center title="头像" is-link>
+      <van-cell center title="头像" bind:click="onClickShow" is-link>
  
         <van-image radius="3px" class="headImg" width="2.5rem" height="2.5rem" src="{{ user.headerImg }}" />
       </van-cell>
-      <van-field label="昵称" value="{{ user.nickname }}" input-align="right" data-gater="nickname" placeholder="请输入昵称"  bind:change="onChange" />    
+      <van-field label="昵称"  value="{{ user.nickname }}" input-align="right" data-gater="nickname" placeholder="请输入昵称"  bind:change="onChange" />    
       <van-field label="微信号" value="{{ user.wechatNumber }}" input-align="right" data-gater="wechatNumber" placeholder="请输入微信号"  bind:change="onChange" />    
       <van-cell title="性别" class="{{user.sex !=null ? 'value-class_tow' :'' }}" is-link value="{{user.sex==null?'':user.sex== 1 ?'女':'男' }}" bind:click="clickSex" />
     </van-cell-group>

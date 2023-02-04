@@ -6,6 +6,7 @@
 }
 .groups{
   width: 100%;
+  position: relative;
   height: 160rpx;
   display: flex;
   background-color: #fff;
@@ -39,4 +40,25 @@ image{
   padding-top:80rpx;
   font-size: 22rpx;
   color: #c5c9ce;
+}
+.unreadMessage {
+  position: relative;
+}
+.unreadMessage::after {
+  content: ".";
+  position: absolute;
+  color: red;
+  font-size: 72px;
+  right: -1px;
+  top: -64px;
+}
+.group-name{
+  width: 100%;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

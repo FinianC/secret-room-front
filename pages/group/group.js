@@ -1,28 +1,38 @@
 // pages/group/group.js
+<<<<<<< HEAD
 import {
   getGroupMsgContent
 } from '../../api/group'
+=======
+import {chatList} from "../../api/groupApi"
+>>>>>>> b4d4cb39702fdfc882ab7e21bda5c64faf6612ae
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    chatList:[],
+    baseUrl:""
   },
 
-  handleGroupTap:function(){
+  handleGroupTap:function(e){
     wx.navigateTo({
-      url: '/pages/group/groupICQ'
+      url: '/pages/group/groupICQ?id='+e.currentTarget.dataset.id+'&name='+e.currentTarget.dataset.name
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+<<<<<<< HEAD
   onLoad: async function (options) {
     const res = await getGroupMsgContent()
     console.log(res);
+=======
+  onLoad: function (options) {
+    
+>>>>>>> b4d4cb39702fdfc882ab7e21bda5c64faf6612ae
   },
 
   /**
@@ -35,8 +45,16 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: async function () {
+    wx.setNavigationBarTitle({
+      title: "车队群聊"
+  })
+    const res = await chatList();
+    this.setData({
+      chatList:res.data,
+      baseUrl:res.baseUrl
+    })
+    console.log(res);
   },
 
   /**

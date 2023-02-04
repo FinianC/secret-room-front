@@ -1,0 +1,11 @@
+<!--pages/profile/headPortrait.wxml-->
+<view class="wrapper">
+  <!-- <van-icon class="weapp-nav" name="weapp-nav" /> -->
+  <view class="weapp-nav" bindtap="selectPicture">...</view>
+  <van-overlay custom-style="background-color:#000" class-name="overlay"  show="{{ true }}" bind:click="onClickHide">
+    <view >
+      <van-image class="headerImg" width="200" height="200" src="{{user.headerImg}}" />
+    </view>
+  </van-overlay>
+
+</view>

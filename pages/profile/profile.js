@@ -24,6 +24,9 @@ Page({
     // })
   },
   async onShow(){
+    wx.setNavigationBarTitle({
+      title: "个人信息"
+  })
     let user = await getAppUser();
     let baseUrl = wx.getStorageSync('baseUrl')
     // 调用小程序 API，得到用户信息

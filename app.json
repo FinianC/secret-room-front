@@ -11,7 +11,11 @@
     "pages/profile/edit",
     "pages/group/group",
     "pages/group/groupICQ",
+<<<<<<< HEAD
     "pages/home/detail"
+=======
+    "pages/profile/headPortrait"
+>>>>>>> b4d4cb39702fdfc882ab7e21bda5c64faf6612ae
   ],
   "window": {
     "backgroundTextStyle": "dark",
