@@ -162,3 +162,39 @@ page {
   font-size: 30rpx;
   color: #a5a5a5;
 }
+.gr,.lf{
+  position: relative;
+}
+.lf::before,.gr::after{
+  position:absolute;
+  content: "";           
+  height: 0;
+  width: 0;
+  border: 5px solid transparent;
+}
+.gr::after{      
+  right: -24rpx; 
+  border-left: 5px solid #96EB6A;
+}
+.lf::before{      
+  left: -24rpx; 
+  border-right: 5px solid #fff;
+}
+.info_title{
+  position: relative;
+  top: 23rpx;
+}
+.nickname{
+  position: absolute;
+  right: 150rpx;
+  font-size: 25rpx;
+  top: -5rpx;
+  color: #777777;
+}
+.nickname_receive{
+  position: absolute;
+  left:  150rpx;
+  font-size: 25rpx;
+  top: -5rpx;
+  color: #777777;
+}
