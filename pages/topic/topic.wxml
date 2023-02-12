@@ -6,14 +6,13 @@
   <view class="store">
     <view class="store-item">
       <view class="store-picture">
-        <image class="store-p" src="/images/duck.png"></image>
+        <image class="store-p" src="/images/8.jpg"></image>
       </view>
       <view class="store-info">
-        <view class="store-name">插班生</view>
+        <view class="store-name">插班生[EGA金奖]</view>
+        <view class="store-address">沉浸演绎</view>
         <view class="store-address">上海市徐汇区瑞金南路500号</view>
-      </view>
-      <view class="store-topic">
-      
+        <view class="price">￥<text class="price-num">298</text></view>
       </view>
     </view>
   </view>
