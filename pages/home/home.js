@@ -127,7 +127,7 @@ Page({
     this.existsList()
     await this.getQueryPageList();
     console.log(this.data)
-
+    wx.stopPullDownRefresh()
   },
 
   /**
@@ -324,6 +324,7 @@ Page({
   onPullDownRefresh: function (event) {
     this.setQueryUp();
     this.getQueryPageList();
+    wx.stopPullDownRefresh()
   },
   /**
    * 查询参数初始化

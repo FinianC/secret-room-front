@@ -1,6 +1,7 @@
 // pages/login/login.js
 import { getOpenId } from '../../api/index'
 import { setAppToken ,setAppUser} from '../../utils/token'
+const app = getApp()
 Page({
 
   /**
@@ -41,7 +42,9 @@ Page({
                 await wx.setStorageSync('baseUrl', respones.baseUrl)
                 await setAppToken(respones?.data?.token || {})
                 await setAppUser(respones?.data?.user || {})
-
+                let token = respones?.data?.token;
+                app.globalData.token = token
+                app.initSocket(token)
                 wx.switchTab({
                   url: '../home/home',
                 })

@@ -42,7 +42,6 @@ Page({
       chatList:res.data,
       baseUrl:res.baseUrl
     })
-    console.log(res);
   },
 
   /**

@@ -48,7 +48,7 @@ page {
 	flex-direction: row-reverse;
 	padding: 0 30rpx;
 	box-sizing: border-box;
-  margin-bottom: 15rpx;
+  margin-bottom: 40rpx;
   position: relative;
 
 }
@@ -197,4 +197,7 @@ page {
   font-size: 25rpx;
   top: -5rpx;
   color: #777777;
+}
+.info_box2{
+
 }
