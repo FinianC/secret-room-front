@@ -1,4 +1,4 @@
-var env = 'FT';  // SIT-测试环境    PRO-生产    FT-开发
+var env = 'PRO';  // SIT-测试环境    PRO-生产    FT-开发
 var baseUrl = '';
 switch (env) {
   case 'FT': baseUrl = 'http://192.168.74.1:9096/secret'; break;

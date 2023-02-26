@@ -1,2 +1,6 @@
 <!--pages/home/detail.wxml-->
-<text>pages/home/detail.wxml</text>
+<view>
+  <view>
+    <image src="" mode=""/>
+  </view>
+</view>

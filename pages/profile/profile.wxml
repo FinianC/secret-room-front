@@ -52,5 +52,6 @@
   </scroll-view>
 </view> 
 
-<view class="bg-image"></view>
+<view class="bg-image">
+</view>
 

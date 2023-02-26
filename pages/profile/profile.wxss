@@ -29,7 +29,6 @@ page{
   height: 400rpx;
   position: absolute;
   background:url('https://gd-hbimg.huaban.com/df195b7899fa2ed86c724bad0314c462e26eae9b80469-8ausZk') no-repeat;
-  filter: blur(15rpx);
   background-size: 100%;
   z-index: 1;
 }

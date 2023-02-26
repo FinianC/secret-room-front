@@ -1,0 +1,68 @@
+/* pages/topic/detail.wxss */
+.img-bg{
+  width: 100%;
+  height: 550rpx;
+  filter: blur(35rpx);
+  transform: scale(1.2);
+}
+.page{
+  position: relative;
+}
+.detail-info{
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 550rpx;
+  top: 1rpx;
+}
+.basic-info{
+  width: 100%;
+  height: 100%;
+  padding: 10rpx;
+  display: flex;
+}
+.info-photo{
+  width: 250rpx;
+  height: 300rpx;
+  margin-right: 30rpx;
+  border-radius: 10rpx;
+}
+.describe{
+  width: 100%;
+  height: 900rpx;
+  background-color: #fff;
+  position: relative;
+  z-index: 10;
+}
+.info-title{
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.shu{
+  color: rgb(144, 149, 153);
+}
+.info-price{
+  font-size: 40rpx;
+  color:#a73939;
+}
+.unit{
+  color: #2999ff;
+}
+.buy{
+  width: 100%;
+  height: 120rpx;
+  position: fixed;
+  bottom: 0rpx;
+  z-index: 50;
+  background-color: #fff;
+}
+.buy-btn{
+  width: 600rpx;
+  text-align: center;
+  margin: 0 auto;
+  height: 70rpx;
+  color: #fff;
+  background-color: #2999ff;
+  line-height: 70rpx;
+  border-radius: 50rpx;
+}
