@@ -4,15 +4,15 @@
     <InputSearch bindsearchVal="handleSearchVal" holderText="请输入密室名称"></InputSearch>
   </view>
   <view class="store">
-    <view class="store-item" wx:for="[1,2,3,4]">
+    <view class="store-item" wx:for="{{ticketList}}">
       <view class="store-picture">
         <image class="store-p" src="/images/8.jpg"></image>
       </view>
-      <view  class="store-info" bindtap="handleDetail">
-        <view class="store-name">插班生[EGA金奖]</view>
-        <view class="store-address">沉浸演绎</view>
-        <view class="store-address">上海市徐汇区瑞金南路500号</view>
-        <view class="price">￥<text class="price-num">298</text></view>
+      <view  class="store-info" data-id='{{item.id}}' bindtap="handleDetail">
+        <view class="store-name">{{item.name}}</view>
+        <view class="store-address">{{item.themeName}}</view>
+        <view class="store-address">{{item.storeVo.address}}</view>
+        <view class="price">￥<text class="price-num">{{item.price}}</text></view>
       </view>
     </view>
   </view>

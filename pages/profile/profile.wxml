@@ -9,49 +9,33 @@
         {{user.nickname }}
       </view>
       <view style="font-size:30rpx;margin-top:10rpx;display: flex;">
-        
-        <view class="sex-or-age {{user.sex == 1 ? 'girl': user.sex == 2 ? 'man':'smile' }} "  >
-          <image  wx:if="{{user.sex == 1}}" src="/images/girl.png"></image> 
-          <image  wx:if="{{user.sex == 2}}"  src="/images/man.png"></image>
+
+        <view class="sex-or-age {{user.sex == 1 ? 'girl': user.sex == 2 ? 'man':'smile' }} ">
+          <image wx:if="{{user.sex == 1}}" src="/images/girl.png"></image>
+          <image wx:if="{{user.sex == 2}}" src="/images/man.png"></image>
           <van-icon wx:if="{{user.sex == null}}" name="smile-o" />
         </view>
       </view>
     </view>
     <view class="edit" bindtap="handleEdit">
-    <image src="../../images/edit.png"></image>
-    <text></text>
-  </view>
+      <image src="../../images/edit.png"></image>
+      <text></text>
+    </view>
   </view>
 
   <!-- 功能区域 -->
-  <scroll-view scroll-y>
-    <view class="func">
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-    </view>
-  </scroll-view>
-</view> 
+  
+      <view style="width: 100%;margin: 15rpx 10rpx 0 10rpx; background:rgb(172, 217, 238);padding: 0 10rpx;border-radius: 30rpx;">
+        <van-grid border="{{false}}">
+          <van-grid-item icon="photo-o" text="全部订单" />
+          <van-grid-item icon="photo-o" text="待付款" />
+          <van-grid-item icon="photo-o" text="可使用" />
+          <van-grid-item icon="photo-o" text="退款/售后" />
+        </van-grid>
+      </view>
+
+ 
+</view>
 
 <view class="bg-image">
 </view>
-

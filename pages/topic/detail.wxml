@@ -1,16 +1,16 @@
 <!--pages/topic/detail.wxml-->
 <view class="page">
   <view>
-    <image class="img-bg" src="/images/8.jpg" mode=""/>
+    <image class="img-bg" src="/images/8.jpg" mode="" />
   </view>
   <view class="detail-info">
     <view class="basic-info">
       <view>
-        <image class="info-photo" src="/images/8.jpg" mode=""/>
+        <image class="info-photo" src="/images/8.jpg" mode="" />
       </view>
       <view>
         <view class="info-title">
-          插班生 《重制版》
+          {{topicDetail.name}}
         </view>
         <view style="margin-top: 15rpx;">
           4人开场 <text class="shu">|</text> 最多8人 <text class="shu">|</text> 75分钟
@@ -18,20 +18,85 @@
         <view style="margin-top: 15rpx;">
           沉浸演绎 <text class="shu">|</text> 微恐
         </view>
-        <view style="margin-top: 80rpx;">
-          <text class="info-price">328 </text> <text class="unit">起/人</text>
+        <view class="address">
+          地址:{{topicDetail.storeVo.address}}
+        </view>
+        <view class="address-image">
+          <image style="width:100%;height:100%" src="/images/daohang.png" mode="" />
+        </view>
+        <view style="margin-top: 30rpx;">
+          <text class="info-price"> {{topicDetail.price}} </text> <text class="unit">起/人</text>
+        </view>
+        <view class="introduce">
+          简介
+        </view>
+        <view class="description">
+          {{topicDetail.description}}
         </view>
       </view>
     </view>
   </view>
 </view>
-<view class="describe">
-  <view>
-    购买须知
-  </view>
-</view>
+<van-tabs active="{{ active }}" bind:change="handleChange" swipeable="true" title-active-color="#2999ff" title-inactive-color="#000000">
+  <van-tab title="商品介绍">
+    <view class="describe">
+      <rich-text nodes="{{productIntroduction}}" />
+      <view style="height: 120rpx;"></view>
+    </view>
+  </van-tab>
+  <van-tab title="购买须知">
+    <view class="describe">
+      <rich-text nodes="{{purchaseInstructions}}" />
+      <view style="height: 120rpx;"></view>
+    </view>
+  </van-tab>
+</van-tabs>
+
 <view class="buy">
-  <view class="buy-btn">
+  <view class="buy-btn" bind:tap="handleShow">
     预定
   </view>
 </view>
+<van-popup show="{{ show }}" position="bottom" round custom-style="height: 77%;background-color:rgb(240,240,240);padding:0rpx 30rpx" bind:close="onClose" closeable>
+  <view style="text-align: center;margin: 30rpx 0;">
+    订单详情
+  </view>
+  <view style="width: 100%;height: 160rpx;background-color: white;margin-bottom: 20rpx;display: flex;">
+    <image class="reserve-photo" src="/images/8.jpg" mode="" />
+    <view>
+      <view style="margin: 10rpx 10rpx 40rpx 10rpx;">
+        {{topicDetail.name}}
+      </view>
+      <view style="margin-left: 10rpx;">
+        <van-stepper value="{{ 1 }}" bind:change="onChange" />
+      </view>
+    </view>
+  </view>
+  <view class="reserve">
+    <van-cell-group>
+      <van-field value="{{ phone }}" label="手机号" placeholder="请输入手机号" border="{{ false }}" />
+    </van-cell-group>
+  </view>
+  <view class="should-know">
+    <view class="should-know-title">
+      订单须知：
+    </view>
+    <view class="should-know-content">
+      1.付款成功后可在 -我的订单- 中查看订单核销码
+    </view>
+    <view class="should-know-content">
+      2.退款规则：
+      <view class="know-sys">一、用户可在 -订单详情- 自行手动退款</view>
+      <view class="know-sys">二、30天后用户未使用自动退款</view>
+    </view>
+    <view class="should-know-content">
+      3.本产品只限本人持有使用，禁止二次售卖，否则商家有权作废核销码并不予退款。
+    </view>
+  </view>
+  <view class="buy">
+    <view class="confirm-pay-btn" bind:tap="pay">
+      确认支付（<text style="color:#f82424">￥{{allPrice}}</text> ）
+    </view>
+  </view>
+
+</van-popup>

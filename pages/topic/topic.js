@@ -1,16 +1,35 @@
 // pages/topic/topic.js
+import {getTicketList} from "../../api/index.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    form:{
+      current : 1,
+      pageSize : 5,
+      name: "",
+      themeId: ''
+    },
+    // 密室主题列表
+    ticketList:[]
   },
 
-  handleDetail: function  () {
+  handleDetail: function  (e) {
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: './detail',
+      url: `./detail?id=${id}`,
+    })
+  },
+
+  /**
+   * 获取密室主题分页列表
+   */
+  handleGetTicketList : async function () {  
+    const res = await getTicketList(this.data.form);
+    this.setData({
+      ticketList:res.data.records
     })
   },
 
@@ -31,8 +50,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: async function () {
+    this.handleGetTicketList()
   },
 
   /**

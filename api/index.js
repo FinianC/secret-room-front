@@ -53,3 +53,13 @@ export function getThemeList() {
     method: 'GET'
   })
 }
+/**
+ * 获取主题列表
+ */
+export function getTicketList(data) {
+  return request({
+    url: '/ticket/page',
+    method: 'POST',
+    data
+  })
+}

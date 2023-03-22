@@ -6,7 +6,9 @@
   transform: scale(1.2);
 }
 .page{
+  width: 100%;
   position: relative;
+  overflow:hidden;
 }
 .detail-info{
   color: #fff;
@@ -16,7 +18,6 @@
   top: 1rpx;
 }
 .basic-info{
-  width: 100%;
   height: 100%;
   padding: 10rpx;
   display: flex;
@@ -28,10 +29,9 @@
   border-radius: 10rpx;
 }
 .describe{
-  width: 100%;
-  height: 900rpx;
+  width: calc(100% - 40rpx);
+  padding:0 20rpx;
   background-color: #fff;
-  position: relative;
   z-index: 10;
 }
 .info-title{
@@ -43,7 +43,7 @@
 }
 .info-price{
   font-size: 40rpx;
-  color:#a73939;
+  color:#f82424;
 }
 .unit{
   color: #2999ff;
@@ -53,6 +53,7 @@
   height: 120rpx;
   position: fixed;
   bottom: 0rpx;
+  left: 0;
   z-index: 50;
   background-color: #fff;
 }
@@ -65,4 +66,82 @@
   background-color: #2999ff;
   line-height: 70rpx;
   border-radius: 50rpx;
+}
+.introduce{
+  font-size: 26rpx;
+  position: absolute;
+  top: 330rpx;
+  left: 20rpx;
+}
+.description{
+  font-size: 24rpx;
+  color: rgb(157, 163, 168);
+  position: absolute;
+  top: 375rpx;
+  left: 20rpx;
+}
+.address{
+  width:380rpx;
+  margin-top: 15rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.address-image{
+  position: absolute;
+  width: 45rpx;
+  height:45rpx;
+  right: 20rpx;
+  top: 195rpx;
+}
+.confirm-pay-btn{
+  width: 600rpx;
+  text-align: center;
+  margin: 0 auto;
+  height: 70rpx;
+  color: #fff;
+  background-color: #2999ff;
+  line-height: 70rpx;
+  border-radius: 50rpx;
+}
+.reserve{
+  width: 100%;
+  height: 80rpx;
+  line-height:80rpx;
+  background-color: white;
+  margin-bottom: 20rpx;
+}
+.reserve-photo{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 10rpx;
+  border-radius: 8rpx;
+}
+.should-know{
+  width: 100%;height: 100%;background-color: white;margin-bottom: 20rpx;
+}
+.should-know-title{
+  font-size: 28rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-weight: 700;
+  margin: 0 0 10rpx 30rpx;
+}
+.should-know-content{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  margin: 0 30rpx 20rpx 30rpx;
+  padding: 15rpx;
+  background-color: rgb(211, 250, 255);
+}
+.know-sys{
+  padding-left: 30rpx;
+}
+.richTextImg{
+  width: 100%;
+  height:auto;
+}
+.van-tabs__line{
+  background-color: #2999ff !important;
+  bottom: 10rpx !important;
 }
